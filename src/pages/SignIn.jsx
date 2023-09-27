@@ -7,8 +7,23 @@ import {
     Typography,
     Button,
 } from "@mui/material";
+import { useState } from "react";
 
 export const SignIn = () => {
+    const [loginData, setLoginData] = useState({
+        username: "",
+        password: ""
+    })
+
+    const dataLogin = (e) => {
+        setLoginData({...loginData, [e.target.name]: e.target.value})
+    }
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        console.log(loginData)
+    }
+
     return (
         <Container maxWidth="xl">
             <Grid
@@ -39,14 +54,16 @@ export const SignIn = () => {
                         >
                             Iniciar Sesion
                         </Typography>
-                        <Box component="form">
+                        <Box component="form" onSubmit={onSubmit}>
                             <TextField
                                 name="username"
                                 margin="normal"
                                 type="text"
                                 fullWidth
                                 label="Email"
+                                onChange={dataLogin}
                                 sx={{ mt: 2, mb: 1.5 }}
+                                required
                             />
                             <TextField
                                 name="password"
@@ -54,7 +71,9 @@ export const SignIn = () => {
                                 type="password"
                                 fullWidth
                                 label="Password"
+                                onChange={dataLogin}
                                 sx={{ mt: 1.5, mb: 1.5 }}
+                                required
                             />
 
                             <Button
