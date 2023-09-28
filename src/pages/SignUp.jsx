@@ -10,8 +10,11 @@ import {
     FormControlLabel,
 } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const SignUp = () => {
+    const navigate = useNavigate();
+
     const [userData, setUserData] = useState({
         names: "",
         lastNames: "",
@@ -121,6 +124,7 @@ export const SignUp = () => {
                                 type="submit"
                                 variant="contained"
                                 sx={{ mt: 1.5, mb: 3, height: "4em" }}
+                                onClick={() => navigate("/home")}
                             >
                                 Ingresar
                             </Button>

@@ -8,19 +8,22 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import ButtonGroup from '@mui/material/ButtonGroup';
+import ButtonGroup from "@mui/material/ButtonGroup";
 import MenuItem from "@mui/material/MenuItem";
 import HomeIcon from "@mui/icons-material/Home";
+import { useNavigate } from "react-router-dom";
 
-const pages = ["Mis Frutas"];
+const pages = ["Frutas"];
 
 export const NavBarInit = () => {
+    const navigate = useNavigate();
+
     const [anchorElNav, setAnchorElNav] = useState(null);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
-    
+
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
     };
@@ -84,23 +87,23 @@ export const NavBarInit = () => {
                                 display: { xs: "block", md: "none" },
                             }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem
-                                    key={page}
-                                    onClick={handleCloseNavMenu}
+                            <MenuItem
+                                key={pages[0]}
+                                onClick={handleCloseNavMenu}
+                            >
+                                <Typography
+                                    textAlign="center"
+                                    onClick={() => navigate("myfruits")}
                                 >
-                                    <Typography textAlign="center">
-                                        {page}
-                                    </Typography>
-                                </MenuItem>
-                            ))}
+                                    {pages[0]}
+                                </Typography>
+                            </MenuItem>
                         </Menu>
                     </Box>
                     <Typography
                         variant="h5"
                         noWrap
                         component="a"
-                        href="/"
                         sx={{
                             mr: 2,
                             display: { xs: "flex", md: "none" },
@@ -120,15 +123,13 @@ export const NavBarInit = () => {
                             display: { xs: "none", md: "flex" },
                         }}
                     >
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: "white", display: "block" }}
-                            >
-                                {page}
-                            </Button>
-                        ))}
+                        <Button
+                            key={pages[0]}
+                            onClick={() => navigate("myfruits")}
+                            sx={{ my: 2, color: "white", display: "block" }}
+                        >
+                            {pages[0]}
+                        </Button>
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
@@ -137,8 +138,15 @@ export const NavBarInit = () => {
                             variant="contained"
                             aria-label="Disabled elevation buttons"
                         >
-                            <Button variant="outlined">Iniciar Sesion</Button>
-                            <Button>Registrarse</Button>
+                            <Button
+                                variant="outlined"
+                                onClick={() => navigate("signin")}
+                            >
+                                Iniciar Sesion
+                            </Button>
+                            <Button onClick={() => navigate("signup")}>
+                                Registrarse
+                            </Button>
                         </ButtonGroup>
                     </Box>
                 </Toolbar>

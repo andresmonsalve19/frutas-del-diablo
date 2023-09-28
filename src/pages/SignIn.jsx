@@ -8,8 +8,11 @@ import {
     Button,
 } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const SignIn = () => {
+    const navigate = useNavigate()
+
     const [loginData, setLoginData] = useState({
         username: "",
         password: ""
@@ -80,6 +83,7 @@ export const SignIn = () => {
                                 fullWidth
                                 type="submit"
                                 variant="contained"
+                                onClick={() => navigate("/home")}
                                 sx={{ mt: 1.5, mb: 3, height: "4em" }}
                             >
                                 Ingresar

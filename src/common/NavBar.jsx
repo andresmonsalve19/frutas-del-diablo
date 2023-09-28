@@ -11,13 +11,15 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
-import HomeIcon from '@mui/icons-material/Home';
+import HomeIcon from "@mui/icons-material/Home";
+import { useNavigate } from "react-router-dom";
 
 const pages = ["Mis Frutas"];
 const settings = ["Mi Perfil", "Cuenta", "Cerrar Sesión"];
 
 export const NavBar = () => {
+    const navigate = useNavigate();
+
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -47,7 +49,7 @@ export const NavBar = () => {
                         variant="h6"
                         noWrap
                         component="a"
-                        href="/"
+                        href="/home"
                         sx={{
                             mr: 2,
                             display: { xs: "none", md: "flex" },
@@ -95,23 +97,20 @@ export const NavBar = () => {
                                 display: { xs: "block", md: "none" },
                             }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem
-                                    key={page}
-                                    onClick={handleCloseNavMenu}
-                                >
-                                    <Typography textAlign="center">
-                                        {page}
-                                    </Typography>
-                                </MenuItem>
-                            ))}
+                            <MenuItem
+                                key={pages[0]}
+                                onClick={() => navigate("/myfruits")}
+                            >
+                                <Typography textAlign="center">
+                                    {pages[0]}
+                                </Typography>
+                            </MenuItem>
                         </Menu>
                     </Box>
                     <Typography
                         variant="h5"
                         noWrap
                         component="a"
-                        href="/"
                         sx={{
                             mr: 2,
                             display: { xs: "flex", md: "none" },
@@ -131,15 +130,13 @@ export const NavBar = () => {
                             display: { xs: "none", md: "flex" },
                         }}
                     >
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: "white", display: "block" }}
-                            >
-                                {page}
-                            </Button>
-                        ))}
+                        <Button
+                            key={pages[0]}
+                            onClick={() => navigate("/myfruits")}
+                            sx={{ my: 2, color: "white", display: "block" }}
+                        >
+                            {pages[0]}
+                        </Button>
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
@@ -148,10 +145,7 @@ export const NavBar = () => {
                                 onClick={handleOpenUserMenu}
                                 sx={{ p: 0 }}
                             >
-                                <Avatar
-                                    alt="Remy Sharp"
-                                    src="/"
-                                />
+                                <Avatar alt="Remy Sharp" src="/" />
                             </IconButton>
                         </Tooltip>
                         <Menu
@@ -170,16 +164,30 @@ export const NavBar = () => {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {settings.map((setting) => (
-                                <MenuItem
-                                    key={setting}
-                                    onClick={handleCloseUserMenu}
-                                >
-                                    <Typography textAlign="center">
-                                        {setting}
-                                    </Typography>
-                                </MenuItem>
-                            ))}
+                            <MenuItem
+                                key={settings[0]}
+                                onClick={() => navigate("/profile")}
+                            >
+                                <Typography textAlign="center">
+                                    {settings[0]}
+                                </Typography>
+                            </MenuItem>
+                            <MenuItem
+                                key={settings[1]}
+                                onClick={() => navigate("/account")}
+                            >
+                                <Typography textAlign="center">
+                                    {settings[1]}
+                                </Typography>
+                            </MenuItem>
+                            <MenuItem
+                                key={settings[2]}
+                                onClick={() => navigate("/")}
+                            >
+                                <Typography textAlign="center">
+                                    {settings[2]}
+                                </Typography>
+                            </MenuItem>
                         </Menu>
                     </Box>
                 </Toolbar>
