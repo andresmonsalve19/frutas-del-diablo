@@ -5,6 +5,7 @@ import { SignUp } from "./pages/SignUp";
 import { HomeLayout } from "./common/HomeLayout";
 import { HomeLayoutInit } from "./common/HomeLayoutInit";
 import { HomeInit } from "./pages/HomeInit";
+import { FruitPage} from "./common/FruitPage";
 
 export const Router = () => {
     return (
@@ -17,6 +18,7 @@ export const Router = () => {
             </Route>
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/Fruit" element={<FruitPage />} />
         </Routes>
     );
 };

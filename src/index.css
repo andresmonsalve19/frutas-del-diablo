@@ -66,4 +66,9 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+  .fruit_cart{
+    margin-top: 500px;
+  }
 }
+
+
