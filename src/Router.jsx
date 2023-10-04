@@ -5,6 +5,7 @@ import { SignUp } from "./pages/SignUp";
 import { HomeLayout } from "./common/HomeLayout";
 import { HomeLayoutInit } from "./common/HomeLayoutInit";
 import { HomeInit } from "./pages/HomeInit";
+import { FruitHistory } from "./pages/FruitHistory";
 
 export const Router = () => {
     return (
@@ -14,6 +15,7 @@ export const Router = () => {
             </Route>
             <Route path="/home" element={<HomeLayout />}>
                 <Route path="/home" element={<Home />} />
+                <Route path="/home/history" element={<FruitHistory />} />
             </Route>
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
