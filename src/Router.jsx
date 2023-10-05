@@ -6,16 +6,19 @@ import { HomeLayout } from "./common/HomeLayout";
 import { HomeLayoutInit } from "./common/HomeLayoutInit";
 import { HomeInit } from "./pages/HomeInit";
 import { FruitHistory } from "./pages/FruitHistory";
+import { FruitPage } from "./pages/FruitPage";
 
 export const Router = () => {
     return (
         <Routes>
             <Route path="/" element={<HomeLayoutInit />}>
                 <Route path="/" element={<HomeInit />} />
+                <Route path="/fruit" element={<FruitPage />} />
             </Route>
             <Route path="/home" element={<HomeLayout />}>
                 <Route path="/home" element={<Home />} />
                 <Route path="/home/history" element={<FruitHistory />} />
+                <Route path="/home/fruit" element={<FruitPage />} />
             </Route>
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
