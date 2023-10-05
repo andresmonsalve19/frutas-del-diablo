@@ -5,20 +5,21 @@ import { SignUp } from "./pages/SignUp";
 import { HomeLayout } from "./common/HomeLayout";
 import { HomeLayoutInit } from "./common/HomeLayoutInit";
 import { HomeInit } from "./pages/HomeInit";
-import { FruitPage} from "./common/FruitPage";
+import { FruitPage } from "./pages/FruitPage";
 
 export const Router = () => {
     return (
         <Routes>
             <Route path="/" element={<HomeLayoutInit />}>
                 <Route path="/" element={<HomeInit />} />
+                <Route path="/fruit" element={<FruitPage />} />
             </Route>
             <Route path="/home" element={<HomeLayout />}>
                 <Route path="/home" element={<Home />} />
+                <Route path="/home/fruit" element={<FruitPage />} />
             </Route>
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/Fruit" element={<FruitPage />} />
         </Routes>
     );
 };
