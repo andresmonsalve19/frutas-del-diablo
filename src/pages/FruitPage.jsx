@@ -49,6 +49,7 @@ export const FruitPage = () => {
                     </Grid>
                     <Grid item container direction="row" justifyContent="center">
                         <Grid
+                            item
                             xs={0}
                             style={{ fontSize: "30px", marginTop: "0px" }}
                         >
