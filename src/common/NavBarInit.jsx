@@ -11,13 +11,11 @@ import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import MenuItem from "@mui/material/MenuItem";
 import HomeIcon from "@mui/icons-material/Home";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const pages = ["Frutas"];
+const pages = ["Mis Frutas"];
 
 export const NavBarInit = () => {
-    const navigate = useNavigate();
-
     const [anchorElNav, setAnchorElNav] = useState(null);
 
     const handleOpenNavMenu = (event) => {
@@ -35,24 +33,23 @@ export const NavBarInit = () => {
                     <HomeIcon
                         sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
                     />
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="/"
-                        sx={{
-                            mr: 2,
-                            display: { xs: "none", md: "flex" },
-                            fontFamily: "monospace",
-                            fontWeight: 700,
-                            letterSpacing: ".3rem",
-                            color: "inherit",
-                            textDecoration: "none",
-                        }}
-                    >
-                        FDD
-                    </Typography>
-
+                    <Link to="/">
+                        <Typography
+                            variant="h6"
+                            noWrap
+                            sx={{
+                                mr: 2,
+                                display: { xs: "none", md: "flex" },
+                                fontFamily: "monospace",
+                                fontWeight: 700,
+                                letterSpacing: ".3rem",
+                                color: "white",
+                                textDecoration: "none",
+                            }}
+                        >
+                            FDD
+                        </Typography>
+                    </Link>
                     <Box
                         sx={{
                             flexGrow: 1,
@@ -87,17 +84,17 @@ export const NavBarInit = () => {
                                 display: { xs: "block", md: "none" },
                             }}
                         >
-                            <MenuItem
-                                key={pages[0]}
-                                onClick={handleCloseNavMenu}
-                            >
-                                <Typography
-                                    textAlign="center"
-                                    onClick={() => navigate("myfruits")}
+                            <Link to="mis-frutas">
+                                <MenuItem
+                                    key={pages[0]}
+                                    onClick={handleCloseNavMenu}
+                                    sx={{color: "white"}}
                                 >
-                                    {pages[0]}
-                                </Typography>
-                            </MenuItem>
+                                    <Typography textAlign="center">
+                                        {pages[0]}
+                                    </Typography>
+                                </MenuItem>
+                            </Link>
                         </Menu>
                     </Box>
                     <Typography
@@ -123,13 +120,14 @@ export const NavBarInit = () => {
                             display: { xs: "none", md: "flex" },
                         }}
                     >
-                        <Button
-                            key={pages[0]}
-                            onClick={() => navigate("myfruits")}
-                            sx={{ my: 2, color: "white", display: "block" }}
-                        >
-                            {pages[0]}
-                        </Button>
+                        <Link to="mis-frutas">
+                            <Button
+                                key={pages[0]}
+                                sx={{ my: 2, color: "white", display: "block" }}
+                            >
+                                {pages[0]}
+                            </Button>
+                        </Link>
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
@@ -138,15 +136,14 @@ export const NavBarInit = () => {
                             variant="contained"
                             aria-label="Disabled elevation buttons"
                         >
-                            <Button
-                                variant="outlined"
-                                onClick={() => navigate("signin")}
-                            >
-                                Iniciar Sesion
-                            </Button>
-                            <Button onClick={() => navigate("signup")}>
-                                Registrarse
-                            </Button>
+                            <Link to="/iniciar-sesion">
+                                <Button variant="outlined">
+                                    Iniciar Sesion
+                                </Button>
+                            </Link>
+                            <Link to="registro">
+                                <Button>Registrarse</Button>
+                            </Link>
                         </ButtonGroup>
                     </Box>
                 </Toolbar>
