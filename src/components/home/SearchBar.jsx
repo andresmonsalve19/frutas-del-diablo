@@ -1,6 +1,6 @@
 import { TextField, Grid } from "@mui/material";
 
-export const SearchBar = () => {
+export const SearchBar = ({ filtering }) => {
     return (
         <>
             <Grid
@@ -15,6 +15,7 @@ export const SearchBar = () => {
                         id="outlined-basic"
                         label="Búsqueda"
                         variant="outlined"
+                        onChange={(e) => filtering(e.target.value)}
                     />
                 </Grid>
             </Grid>

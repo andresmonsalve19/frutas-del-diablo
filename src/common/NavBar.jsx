@@ -16,7 +16,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 
-const pages = ["Mis Frutas", "Favoritas"];
+const pages = ["Mis Frutas", "Favoritas", "Registrar Fruta"];
 const settings = ["Mi Perfil", "Cerrar Sesión"];
 
 export const NavBar = () => {
@@ -117,6 +117,13 @@ export const NavBar = () => {
                                     </Typography>
                                 </MenuItem>
                             </Link>
+                            <Link to="registrar-fruta">
+                                <MenuItem key={pages[2]}>
+                                    <Typography textAlign="center" sx={{ color: "white" }}>
+                                        {pages[2]}
+                                    </Typography>
+                                </MenuItem>
+                            </Link>
                         </Menu>
                     </Box>
                     <Typography
@@ -157,6 +164,14 @@ export const NavBar = () => {
                                 {pages[1]}
                             </Button>
                         </Link>
+                        <Link to="registrar-fruta">
+                            <Button
+                                key={pages[2]}
+                                sx={{ my: 2, color: "white", display: "block" }}
+                            >
+                                {pages[2]}
+                            </Button>
+                        </Link>
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
@@ -184,16 +199,7 @@ export const NavBar = () => {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            <Link to="mi-perfil">
-                                <MenuItem key={settings[0]}>
-                                    <Typography
-                                        textAlign="center"
-                                        sx={{ color: "white" }}
-                                    >
-                                        {settings[0]}
-                                    </Typography>
-                                </MenuItem>
-                            </Link>
+
                             <MenuItem onClick={HandleCloseSession} key={settings[1]}>
                                 <Typography
                                     textAlign="center"

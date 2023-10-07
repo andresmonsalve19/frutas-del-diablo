@@ -7,6 +7,7 @@ import { FruitHistory } from "./pages/FruitHistory";
 import { FruitPage } from "./pages/FruitPage";
 import { MyFruits } from "./pages/MyFruits";
 import { Profile } from "./pages/Profile";
+import { RegisterFruit } from "./pages/RegisterFruit";
 import { FavoriteFruits } from "./pages/FavoriteFruits";
 import DataProvider from "./context/DataContext";
 
@@ -21,6 +22,7 @@ export const Router = () => {
                     <Route path="mis-frutas" element={<MyFruits />} />
                     <Route path="mi-perfil" element={<Profile />} />
                     <Route path="favoritas" element={<FavoriteFruits />} />
+                    <Route path="registrar-fruta" element={<RegisterFruit />} />
                 </Route>
                 <Route path="/iniciar-sesion" element={<SignIn />} />
                 <Route path="/registro" element={<SignUp />} />
