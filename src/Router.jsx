@@ -8,20 +8,23 @@ import { FruitPage } from "./pages/FruitPage";
 import { MyFruits } from "./pages/MyFruits";
 import { Profile } from "./pages/Profile";
 import { FavoriteFruits } from "./pages/FavoriteFruits";
+import DataProvider from "./context/DataContext";
 
 export const Router = () => {
     return (
-        <Routes>
-            <Route path="/" element={<HomeLayout />}>
-                <Route path="/" element={<Home />} />
-                <Route path="fruta" element={<FruitPage />} />
-                <Route path="historial" element={<FruitHistory />} />
-                <Route path="mis-frutas" element={<MyFruits />} />
-                <Route path="mi-perfil" element={<Profile />} />
-                <Route path="favoritas" element={<FavoriteFruits />} />
-            </Route>
-            <Route path="/iniciar-sesion" element={<SignIn />} />
-            <Route path="/registro" element={<SignUp />} />
-        </Routes>
+        <DataProvider>
+            <Routes>
+                <Route path="/" element={<HomeLayout />}>
+                    <Route path="/" element={<Home />} />
+                    <Route path="fruta" element={<FruitPage />} />
+                    <Route path="historial" element={<FruitHistory />} />
+                    <Route path="mis-frutas" element={<MyFruits />} />
+                    <Route path="mi-perfil" element={<Profile />} />
+                    <Route path="favoritas" element={<FavoriteFruits />} />
+                </Route>
+                <Route path="/iniciar-sesion" element={<SignIn />} />
+                <Route path="/registro" element={<SignUp />} />
+            </Routes>
+        </DataProvider>
     );
 };

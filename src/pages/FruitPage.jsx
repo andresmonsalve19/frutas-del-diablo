@@ -171,17 +171,6 @@ export const FruitPage = () => {
                             }}
                         >
                             {description_fruit}
-                            {description_fruit}
-                            {description_fruit}
-                            {description_fruit}
-                            {description_fruit}
-                            {description_fruit}
-                            {description_fruit}
-                            {description_fruit}
-                            {description_fruit}
-                            {description_fruit}
-                            {description_fruit}
-                            {description_fruit}
                         </Grid>
                         <Grid item>
                             <Link to="/historial">

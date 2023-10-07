@@ -12,7 +12,9 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import HomeIcon from "@mui/icons-material/Home";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { DataContext } from "../context/DataContext";
 
 const pages = ["Mis Frutas", "Favoritas"];
 const settings = ["Mi Perfil", "Cerrar Sesión"];
@@ -20,6 +22,13 @@ const settings = ["Mi Perfil", "Cerrar Sesión"];
 export const NavBar = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
+    const navigate = useNavigate()
+    const { setIsAuth } = useContext(DataContext)
+
+    function HandleCloseSession() {
+        navigate("/")
+        setIsAuth(false)
+    }
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -96,14 +105,14 @@ export const NavBar = () => {
                         >
                             <Link to="mis-frutas">
                                 <MenuItem key={pages[0]}>
-                                    <Typography textAlign="center" sx={{color: "white"}}>
+                                    <Typography textAlign="center" sx={{ color: "white" }}>
                                         {pages[0]}
                                     </Typography>
                                 </MenuItem>
                             </Link>
                             <Link to="favoritas">
                                 <MenuItem key={pages[1]}>
-                                    <Typography textAlign="center" sx={{color: "white"}}>
+                                    <Typography textAlign="center" sx={{ color: "white" }}>
                                         {pages[1]}
                                     </Typography>
                                 </MenuItem>
@@ -185,16 +194,14 @@ export const NavBar = () => {
                                     </Typography>
                                 </MenuItem>
                             </Link>
-                            <Link to="/">
-                                <MenuItem key={settings[1]}>
-                                    <Typography
-                                        textAlign="center"
-                                        sx={{ color: "white" }}
-                                    >
-                                        {settings[1]}
-                                    </Typography>
-                                </MenuItem>
-                            </Link>
+                            <MenuItem onClick={HandleCloseSession} key={settings[1]}>
+                                <Typography
+                                    textAlign="center"
+                                    sx={{ color: "white" }}
+                                >
+                                    {settings[1]}
+                                </Typography>
+                            </MenuItem>
                         </Menu>
                     </Box>
                 </Toolbar>

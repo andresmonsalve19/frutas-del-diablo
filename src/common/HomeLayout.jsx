@@ -1,9 +1,12 @@
 import { NavBar } from "../common/Navbar";
 import { Outlet } from "react-router-dom";
 import { NavBarInit } from "./NavBarInit";
+import { useContext } from "react";
+import { DataContext } from "../context/DataContext";
 
 export const HomeLayout = () => {
-    let isAuth = true;
+ 
+    const { isAuth } = useContext(DataContext)
 
     return (
         <>

@@ -8,9 +8,13 @@ import {
     Button,
 } from "@mui/material";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { DataContext } from "../context/DataContext";
 
 export const SignIn = () => {
+    const navigate = useNavigate()
+    const { setIsAuth } = useContext(DataContext)
     const [loginData, setLoginData] = useState({
         username: "",
         password: "",
@@ -23,6 +27,8 @@ export const SignIn = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         console.log(loginData);
+        setIsAuth(true)
+        navigate("/")
     };
 
     return (
@@ -55,7 +61,7 @@ export const SignIn = () => {
                         >
                             Iniciar Sesion
                         </Typography>
-                        <Box component="form" onSubmit={onSubmit}>
+                        <Box component="form" >
                             <TextField
                                 name="username"
                                 margin="normal"
@@ -76,16 +82,15 @@ export const SignIn = () => {
                                 sx={{ mt: 1.5, mb: 1.5 }}
                                 required
                             />
-                            <Link to="/">
-                                <Button
-                                    fullWidth
-                                    type="submit"
-                                    variant="contained"
-                                    sx={{ mt: 1.5, mb: 3, height: "4em" }}
-                                >
-                                    <Typography>Ingresar</Typography>
-                                </Button>
-                            </Link>
+                            <Button
+                                fullWidth
+                                type="submit"
+                                variant="contained"
+                                onClick={onSubmit}
+                                sx={{ mt: 1.5, mb: 3, height: "4em" }}
+                            >
+                                <Typography>Ingresar</Typography>
+                            </Button>
                         </Box>
                     </Paper>
                 </Grid>

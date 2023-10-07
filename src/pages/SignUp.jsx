@@ -11,10 +11,13 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { DataContext } from "../context/DataContext";
 
 export const SignUp = () => {
     const navigate = useNavigate();
 
+    const { setIsAuth } = useContext(DataContext)
     const [userData, setUserData] = useState({
         names: "",
         lastNames: "",
@@ -30,6 +33,8 @@ export const SignUp = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         console.log(userData);
+        setIsAuth(true)
+        navigate("/")
     };
 
     return (
@@ -123,7 +128,6 @@ export const SignUp = () => {
                                 label="Acepto términos y condiciones"
                                 required
                             />
-                            <Link to="/">
                                 <Button
                                     fullWidth
                                     type="submit"
@@ -132,7 +136,6 @@ export const SignUp = () => {
                                 >
                                     <Typography>Ingresar</Typography>
                                 </Button>
-                            </Link>
                         </Box>
                     </Paper>
                 </Grid>
