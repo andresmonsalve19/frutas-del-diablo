@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import HomeIcon from "@mui/icons-material/Home";
 import { Link } from "react-router-dom";
 
-const pages = ["Mis Frutas"];
+const pages = ["Mis Frutas", "Favoritas"];
 const settings = ["Mi Perfil", "Cerrar Sesión"];
 
 export const NavBar = () => {
@@ -96,8 +96,15 @@ export const NavBar = () => {
                         >
                             <Link to="mis-frutas">
                                 <MenuItem key={pages[0]}>
-                                    <Typography textAlign="center">
+                                    <Typography textAlign="center" sx={{color: "white"}}>
                                         {pages[0]}
+                                    </Typography>
+                                </MenuItem>
+                            </Link>
+                            <Link to="favoritas">
+                                <MenuItem key={pages[1]}>
+                                    <Typography textAlign="center" sx={{color: "white"}}>
+                                        {pages[1]}
                                     </Typography>
                                 </MenuItem>
                             </Link>
@@ -131,6 +138,14 @@ export const NavBar = () => {
                                 sx={{ my: 2, color: "white", display: "block" }}
                             >
                                 {pages[0]}
+                            </Button>
+                        </Link>
+                        <Link to="favoritas">
+                            <Button
+                                key={pages[1]}
+                                sx={{ my: 2, color: "white", display: "block" }}
+                            >
+                                {pages[1]}
                             </Button>
                         </Link>
                     </Box>

@@ -1,9 +1,10 @@
-import { Container, Typography } from "@mui/material";
+import { Container } from "@mui/material";
+import { PageTitle } from "../common/PageTitle";
 
 export const Profile = () => {
     return (
         <Container maxWidth="xl">
-            <Typography variant="h1" textAlign="center">Mi perfil</Typography>
+            <PageTitle title="Mi Perfil" variant="h2" />
         </Container>
     );
 };

@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import { NavBarInit } from "./NavBarInit";
 
 export const HomeLayout = () => {
-    let isAuth = false;
+    let isAuth = true;
 
     return (
         <>

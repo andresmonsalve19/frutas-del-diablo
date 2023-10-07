@@ -84,17 +84,7 @@ export const NavBarInit = () => {
                                 display: { xs: "block", md: "none" },
                             }}
                         >
-                            <Link to="mis-frutas">
-                                <MenuItem
-                                    key={pages[0]}
-                                    onClick={handleCloseNavMenu}
-                                    sx={{color: "white"}}
-                                >
-                                    <Typography textAlign="center">
-                                        {pages[0]}
-                                    </Typography>
-                                </MenuItem>
-                            </Link>
+                            {/* Poner aqui los items del menú desplegable */}
                         </Menu>
                     </Box>
                     <Typography
@@ -120,14 +110,6 @@ export const NavBarInit = () => {
                             display: { xs: "none", md: "flex" },
                         }}
                     >
-                        <Link to="mis-frutas">
-                            <Button
-                                key={pages[0]}
-                                sx={{ my: 2, color: "white", display: "block" }}
-                            >
-                                {pages[0]}
-                            </Button>
-                        </Link>
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>

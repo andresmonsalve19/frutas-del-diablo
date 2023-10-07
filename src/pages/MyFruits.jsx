@@ -1,9 +1,10 @@
-import { Container, Typography } from "@mui/material";
+import { Container } from "@mui/material";
+import { PageTitle } from "../common/PageTitle";
 
 export const MyFruits = () => {
     return (
         <Container maxWidth="xl">
-            <Typography variant="h1" textAlign="center">Mis frutas</Typography>
+            <PageTitle title="Mis Frutas" variant="h2" />
         </Container>
     );
 };

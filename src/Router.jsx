@@ -7,6 +7,7 @@ import { FruitHistory } from "./pages/FruitHistory";
 import { FruitPage } from "./pages/FruitPage";
 import { MyFruits } from "./pages/MyFruits";
 import { Profile } from "./pages/Profile";
+import { FavoriteFruits } from "./pages/FavoriteFruits";
 
 export const Router = () => {
     return (
@@ -17,6 +18,7 @@ export const Router = () => {
                 <Route path="historial" element={<FruitHistory />} />
                 <Route path="mis-frutas" element={<MyFruits />} />
                 <Route path="mi-perfil" element={<Profile />} />
+                <Route path="favoritas" element={<FavoriteFruits />} />
             </Route>
             <Route path="/iniciar-sesion" element={<SignIn />} />
             <Route path="/registro" element={<SignUp />} />
