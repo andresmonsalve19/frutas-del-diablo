@@ -10,7 +10,7 @@ import {
     FormControlLabel,
 } from "@mui/material";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const SignUp = () => {
     const navigate = useNavigate();
@@ -30,6 +30,7 @@ export const SignUp = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         console.log(userData);
+        navigate("/");
     };
 
     return (
@@ -123,16 +124,15 @@ export const SignUp = () => {
                                 label="Acepto términos y condiciones"
                                 required
                             />
-                            <Link to="/">
-                                <Button
-                                    fullWidth
-                                    type="submit"
-                                    variant="contained"
-                                    sx={{ mt: 1.5, mb: 3, height: "4em" }}
-                                >
-                                    <Typography>Ingresar</Typography>
-                                </Button>
-                            </Link>
+
+                            <Button
+                                fullWidth
+                                type="submit"
+                                variant="contained"
+                                sx={{ mt: 1.5, mb: 3, height: "4em" }}
+                            >
+                                <Typography>Ingresar</Typography>
+                            </Button>
                         </Box>
                     </Paper>
                 </Grid>

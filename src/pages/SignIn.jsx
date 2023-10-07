@@ -8,9 +8,11 @@ import {
     Button,
 } from "@mui/material";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 export const SignIn = () => {
+    const navigate = useNavigate();
+
     const [loginData, setLoginData] = useState({
         username: "",
         password: "",
@@ -22,7 +24,8 @@ export const SignIn = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log(loginData);
+        console.log(loginData)
+        navigate("/")
     };
 
     return (
@@ -76,16 +79,14 @@ export const SignIn = () => {
                                 sx={{ mt: 1.5, mb: 1.5 }}
                                 required
                             />
-                            <Link to="/">
-                                <Button
-                                    fullWidth
-                                    type="submit"
-                                    variant="contained"
-                                    sx={{ mt: 1.5, mb: 3, height: "4em" }}
-                                >
-                                    <Typography>Ingresar</Typography>
-                                </Button>
-                            </Link>
+                            <Button
+                                fullWidth
+                                type="submit"
+                                variant="contained"
+                                sx={{ mt: 1.5, mb: 3, height: "4em" }}
+                            >
+                                <Typography>Ingresar</Typography>
+                            </Button>
                         </Box>
                     </Paper>
                 </Grid>
