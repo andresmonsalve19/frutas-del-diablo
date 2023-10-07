@@ -3,23 +3,25 @@ import { Home } from "./pages/Home";
 import { SignIn } from "./pages/SignIn";
 import { SignUp } from "./pages/SignUp";
 import { HomeLayout } from "./common/HomeLayout";
-import { HomeLayoutInit } from "./common/HomeLayoutInit";
-import { HomeInit } from "./pages/HomeInit";
+import { FruitHistory } from "./pages/FruitHistory";
 import { FruitPage } from "./pages/FruitPage";
+import { MyFruits } from "./pages/MyFruits";
+import { Profile } from "./pages/Profile";
+import { FavoriteFruits } from "./pages/FavoriteFruits";
 
 export const Router = () => {
     return (
         <Routes>
-            <Route path="/" element={<HomeLayoutInit />}>
-                <Route path="/" element={<HomeInit />} />
-                <Route path="/fruit" element={<FruitPage />} />
+            <Route path="/" element={<HomeLayout />}>
+                <Route path="/" element={<Home />} />
+                <Route path="fruta" element={<FruitPage />} />
+                <Route path="historial" element={<FruitHistory />} />
+                <Route path="mis-frutas" element={<MyFruits />} />
+                <Route path="mi-perfil" element={<Profile />} />
+                <Route path="favoritas" element={<FavoriteFruits />} />
             </Route>
-            <Route path="/home" element={<HomeLayout />}>
-                <Route path="/home" element={<Home />} />
-                <Route path="/home/fruit" element={<FruitPage />} />
-            </Route>
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/signup" element={<SignUp />} />
+            <Route path="/iniciar-sesion" element={<SignIn />} />
+            <Route path="/registro" element={<SignUp />} />
         </Routes>
     );
 };

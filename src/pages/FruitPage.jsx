@@ -1,5 +1,7 @@
+import { Button, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { BsHeart, BsArrowLeftCircle } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 export const FruitPage = () => {
     const queryString = window.location.search;
@@ -21,10 +23,11 @@ export const FruitPage = () => {
                 container
                 direction="row"
                 justifyContent="center"
-                style={{
+                sx={{
                     backgroundColor: "black",
                     maxHeight: "1000px",
                     color: "white",
+                    p: 1,
                 }}
             >
                 <Grid
@@ -41,13 +44,21 @@ export const FruitPage = () => {
                         style={{ marginTop: "40px" }}
                     >
                         <Grid item xs={9} style={{ fontSize: "30px" }}>
-                            <BsArrowLeftCircle />
+                            <Link to="/" >
+                                <BsArrowLeftCircle color="white" />
+                            </Link>
                         </Grid>
+
                         <Grid item xs={0} style={{ fontSize: "30px" }}>
                             <BsHeart />
                         </Grid>
                     </Grid>
-                    <Grid item container direction="row" justifyContent="center">
+                    <Grid
+                        item
+                        container
+                        direction="row"
+                        justifyContent="center"
+                    >
                         <Grid
                             item
                             xs={0}
@@ -142,7 +153,13 @@ export const FruitPage = () => {
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid item container direction="row" justifyContent="center">
+                    <Grid
+                        item
+                        container
+                        direction="row"
+                        justifyContent="center"
+                        sx={{ mb: 6 }}
+                    >
                         <Grid
                             item
                             xs={0}
@@ -165,7 +182,16 @@ export const FruitPage = () => {
                             {description_fruit}
                             {description_fruit}
                             {description_fruit}
-                            <p style={{ height: "100px" }} />
+                        </Grid>
+                        <Grid item>
+                            <Link to="/historial">
+                                <Typography
+                                    variant="overline"
+                                    sx={{ color: "#C0CAC4" }}
+                                >
+                                    Ver historial de versiones
+                                </Typography>
+                            </Link>
                         </Grid>
                     </Grid>
                 </Grid>

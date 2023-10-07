@@ -8,24 +8,22 @@ import {
     Button,
 } from "@mui/material";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const SignIn = () => {
-    const navigate = useNavigate()
-
     const [loginData, setLoginData] = useState({
         username: "",
-        password: ""
-    })
+        password: "",
+    });
 
     const dataLogin = (e) => {
-        setLoginData({...loginData, [e.target.name]: e.target.value})
-    }
+        setLoginData({ ...loginData, [e.target.name]: e.target.value });
+    };
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log(loginData)
-    }
+        console.log(loginData);
+    };
 
     return (
         <Container maxWidth="xl">
@@ -78,16 +76,16 @@ export const SignIn = () => {
                                 sx={{ mt: 1.5, mb: 1.5 }}
                                 required
                             />
-
-                            <Button
-                                fullWidth
-                                type="submit"
-                                variant="contained"
-                                onClick={() => navigate("/home")}
-                                sx={{ mt: 1.5, mb: 3, height: "4em" }}
-                            >
-                                Ingresar
-                            </Button>
+                            <Link to="/">
+                                <Button
+                                    fullWidth
+                                    type="submit"
+                                    variant="contained"
+                                    sx={{ mt: 1.5, mb: 3, height: "4em" }}
+                                >
+                                    <Typography>Ingresar</Typography>
+                                </Button>
+                            </Link>
                         </Box>
                     </Paper>
                 </Grid>

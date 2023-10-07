@@ -12,14 +12,12 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import HomeIcon from "@mui/icons-material/Home";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const pages = ["Mis Frutas"];
-const settings = ["Mi Perfil", "Cuenta", "Cerrar Sesión"];
+const pages = ["Mis Frutas", "Favoritas"];
+const settings = ["Mi Perfil", "Cerrar Sesión"];
 
 export const NavBar = () => {
-    const navigate = useNavigate();
-
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -45,24 +43,23 @@ export const NavBar = () => {
                     <HomeIcon
                         sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
                     />
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="/home"
-                        sx={{
-                            mr: 2,
-                            display: { xs: "none", md: "flex" },
-                            fontFamily: "monospace",
-                            fontWeight: 700,
-                            letterSpacing: ".3rem",
-                            color: "inherit",
-                            textDecoration: "none",
-                        }}
-                    >
-                        FDD
-                    </Typography>
-
+                    <Link to="/">
+                        <Typography
+                            variant="h6"
+                            noWrap
+                            sx={{
+                                mr: 2,
+                                display: { xs: "none", md: "flex" },
+                                fontFamily: "monospace",
+                                fontWeight: 700,
+                                letterSpacing: ".3rem",
+                                color: "white",
+                                textDecoration: "none",
+                            }}
+                        >
+                            FDD
+                        </Typography>
+                    </Link>
                     <Box
                         sx={{
                             flexGrow: 1,
@@ -97,20 +94,25 @@ export const NavBar = () => {
                                 display: { xs: "block", md: "none" },
                             }}
                         >
-                            <MenuItem
-                                key={pages[0]}
-                                onClick={() => navigate("/myfruits")}
-                            >
-                                <Typography textAlign="center">
-                                    {pages[0]}
-                                </Typography>
-                            </MenuItem>
+                            <Link to="mis-frutas">
+                                <MenuItem key={pages[0]}>
+                                    <Typography textAlign="center" sx={{color: "white"}}>
+                                        {pages[0]}
+                                    </Typography>
+                                </MenuItem>
+                            </Link>
+                            <Link to="favoritas">
+                                <MenuItem key={pages[1]}>
+                                    <Typography textAlign="center" sx={{color: "white"}}>
+                                        {pages[1]}
+                                    </Typography>
+                                </MenuItem>
+                            </Link>
                         </Menu>
                     </Box>
                     <Typography
                         variant="h5"
                         noWrap
-                        component="a"
                         sx={{
                             mr: 2,
                             display: { xs: "flex", md: "none" },
@@ -130,13 +132,22 @@ export const NavBar = () => {
                             display: { xs: "none", md: "flex" },
                         }}
                     >
-                        <Button
-                            key={pages[0]}
-                            onClick={() => navigate("/myfruits")}
-                            sx={{ my: 2, color: "white", display: "block" }}
-                        >
-                            {pages[0]}
-                        </Button>
+                        <Link to="mis-frutas">
+                            <Button
+                                key={pages[0]}
+                                sx={{ my: 2, color: "white", display: "block" }}
+                            >
+                                {pages[0]}
+                            </Button>
+                        </Link>
+                        <Link to="favoritas">
+                            <Button
+                                key={pages[1]}
+                                sx={{ my: 2, color: "white", display: "block" }}
+                            >
+                                {pages[1]}
+                            </Button>
+                        </Link>
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
@@ -164,30 +175,26 @@ export const NavBar = () => {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            <MenuItem
-                                key={settings[0]}
-                                onClick={() => navigate("/profile")}
-                            >
-                                <Typography textAlign="center">
-                                    {settings[0]}
-                                </Typography>
-                            </MenuItem>
-                            <MenuItem
-                                key={settings[1]}
-                                onClick={() => navigate("/account")}
-                            >
-                                <Typography textAlign="center">
-                                    {settings[1]}
-                                </Typography>
-                            </MenuItem>
-                            <MenuItem
-                                key={settings[2]}
-                                onClick={() => navigate("/")}
-                            >
-                                <Typography textAlign="center">
-                                    {settings[2]}
-                                </Typography>
-                            </MenuItem>
+                            <Link to="mi-perfil">
+                                <MenuItem key={settings[0]}>
+                                    <Typography
+                                        textAlign="center"
+                                        sx={{ color: "white" }}
+                                    >
+                                        {settings[0]}
+                                    </Typography>
+                                </MenuItem>
+                            </Link>
+                            <Link to="/">
+                                <MenuItem key={settings[1]}>
+                                    <Typography
+                                        textAlign="center"
+                                        sx={{ color: "white" }}
+                                    >
+                                        {settings[1]}
+                                    </Typography>
+                                </MenuItem>
+                            </Link>
                         </Menu>
                     </Box>
                 </Toolbar>

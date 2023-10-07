@@ -10,7 +10,7 @@ import {
     FormControlLabel,
 } from "@mui/material";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const SignUp = () => {
     const navigate = useNavigate();
@@ -20,17 +20,17 @@ export const SignUp = () => {
         lastNames: "",
         email: "",
         phoneNumber: "",
-        password: ""
-    })
+        password: "",
+    });
 
     const setData = (e) => {
-        setUserData({...userData, [e.target.name]: e.target.value})
-    }
+        setUserData({ ...userData, [e.target.name]: e.target.value });
+    };
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log(userData)
-    }
+        console.log(userData);
+    };
 
     return (
         <Container maxWidth="md">
@@ -62,7 +62,11 @@ export const SignUp = () => {
                         >
                             Registro
                         </Typography>
-                        <Box component="form" sx={{pl:5, pr:5}} onSubmit={onSubmit}>
+                        <Box
+                            component="form"
+                            sx={{ pl: 5, pr: 5 }}
+                            onSubmit={onSubmit}
+                        >
                             <TextField
                                 name="names"
                                 margin="normal"
@@ -114,20 +118,21 @@ export const SignUp = () => {
                                 required
                             />
                             <FormControlLabel
-                                sx={{ mt: 1.5, mb: 1.5, ml: 1.5}}
+                                sx={{ mt: 1.5, mb: 1.5, ml: 1.5 }}
                                 control={<Checkbox />}
                                 label="Acepto términos y condiciones"
                                 required
                             />
-                            <Button
-                                fullWidth
-                                type="submit"
-                                variant="contained"
-                                sx={{ mt: 1.5, mb: 3, height: "4em" }}
-                                onClick={() => navigate("/home")}
-                            >
-                                Ingresar
-                            </Button>
+                            <Link to="/">
+                                <Button
+                                    fullWidth
+                                    type="submit"
+                                    variant="contained"
+                                    sx={{ mt: 1.5, mb: 3, height: "4em" }}
+                                >
+                                    <Typography>Ingresar</Typography>
+                                </Button>
+                            </Link>
                         </Box>
                     </Paper>
                 </Grid>
