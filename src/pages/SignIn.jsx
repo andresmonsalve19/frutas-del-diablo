@@ -61,7 +61,7 @@ export const SignIn = () => {
                         >
                             Iniciar Sesion
                         </Typography>
-                        <Box component="form" >
+                        <Box component="form" onSubmit={onSubmit}>
                             <TextField
                                 name="username"
                                 margin="normal"
@@ -86,7 +86,6 @@ export const SignIn = () => {
                                 fullWidth
                                 type="submit"
                                 variant="contained"
-                                onClick={onSubmit}
                                 sx={{ mt: 1.5, mb: 3, height: "4em" }}
                             >
                                 <Typography>Ingresar</Typography>
