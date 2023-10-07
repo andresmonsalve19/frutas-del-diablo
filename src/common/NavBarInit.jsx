@@ -12,8 +12,9 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import MenuItem from "@mui/material/MenuItem";
 import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const pages = ["Frutas", "Registrar frutas"];
+const pages = ["Frutas"];
 
 export const NavBarInit = () => {
     const navigate = useNavigate();
@@ -98,17 +99,7 @@ export const NavBarInit = () => {
                                     {pages[0]}
                                 </Typography>
                             </MenuItem>
-                            <MenuItem
-                                key={pages[1]}
-                                onClick={handleCloseNavMenu}
-                            >
-                                <Typography
-                                    textAlign="center"
-                                    onClick={() => navigate("registerfruit")}
-                                >
-                                    {pages[1]}
-                                </Typography>
-                            </MenuItem>
+                            
                         </Menu>
                     </Box>
                     <Typography
@@ -134,20 +125,14 @@ export const NavBarInit = () => {
                             display: { xs: "none", md: "flex" },
                         }}
                     >
-                        <Button
-                            key={pages[0]}
-                            onClick={() => navigate("myfruits")}
-                            sx={{ my: 2, color: "white", display: "block" }}
-                        >
-                            {pages[0]}
-                        </Button>
-                        <Button
-                            key={pages[1]}
-                            onClick={() => navigate("registerfruit")}
-                            sx={{ my: 2, color: "white", display: "block" }}
-                        >
-                            {pages[1]}
-                        </Button>
+                        <Link to={"/myfruits"}>
+                            <Button
+                                key={pages[0]}
+                                sx={{ my: 2, color: "white", display: "block" }}
+                            >
+                                {pages[0]}
+                            </Button>
+                        </Link>
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
@@ -169,6 +154,6 @@ export const NavBarInit = () => {
                     </Box>
                 </Toolbar>
             </Container>
-        </AppBar>
+        </AppBar >
     );
 };

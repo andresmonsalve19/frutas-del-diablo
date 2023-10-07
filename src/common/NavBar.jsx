@@ -13,9 +13,10 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const pages = ["Mis Frutas"];
-const settings = ["Mi Perfil", "Cuenta", "Cerrar Sesión"];
+const pages = ["Mis Frutas", "Registrar frutas"];
+const settings = ["Mi Perfil", "Cuenta", "Cerrar Sesión", "Registrar frutas"];
 
 export const NavBar = () => {
     const navigate = useNavigate();
@@ -130,13 +131,14 @@ export const NavBar = () => {
                             display: { xs: "none", md: "flex" },
                         }}
                     >
-                        <Button
-                            key={pages[0]}
-                            onClick={() => navigate("/myfruits")}
-                            sx={{ my: 2, color: "white", display: "block" }}
-                        >
-                            {pages[0]}
-                        </Button>
+                        <Link to={"/myfruits"}>
+                            <Button
+                                key={pages[0]}
+                                sx={{ my: 2, color: "white", display: "block" }}
+                            >
+                                {pages[0]}
+                            </Button>
+                        </Link>
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
@@ -189,9 +191,19 @@ export const NavBar = () => {
                                 </Typography>
                             </MenuItem>
                         </Menu>
-                    </Box>
-                </Toolbar>
-            </Container>
-        </AppBar>
+                        <MenuItem>
+                            <Link to={"/registerfruit"}>
+                            <Button
+                                key={pages[1]}
+                                sx={{ my: 2, color: "white", display: "block" }}
+                            >
+                                {pages[1]}
+                            </Button>
+                        </Link>
+                    </MenuItem>
+                </Box>
+            </Toolbar>
+        </Container>
+        </AppBar >
     );
 };
