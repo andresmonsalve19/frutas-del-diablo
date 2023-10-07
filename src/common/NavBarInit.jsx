@@ -13,7 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router-dom";
 
-const pages = ["Frutas"];
+const pages = ["Frutas", "Registrar frutas"];
 
 export const NavBarInit = () => {
     const navigate = useNavigate();
@@ -98,6 +98,17 @@ export const NavBarInit = () => {
                                     {pages[0]}
                                 </Typography>
                             </MenuItem>
+                            <MenuItem
+                                key={pages[1]}
+                                onClick={handleCloseNavMenu}
+                            >
+                                <Typography
+                                    textAlign="center"
+                                    onClick={() => navigate("registerfruit")}
+                                >
+                                    {pages[1]}
+                                </Typography>
+                            </MenuItem>
                         </Menu>
                     </Box>
                     <Typography
@@ -129,6 +140,13 @@ export const NavBarInit = () => {
                             sx={{ my: 2, color: "white", display: "block" }}
                         >
                             {pages[0]}
+                        </Button>
+                        <Button
+                            key={pages[1]}
+                            onClick={() => navigate("registerfruit")}
+                            sx={{ my: 2, color: "white", display: "block" }}
+                        >
+                            {pages[1]}
                         </Button>
                     </Box>
 
