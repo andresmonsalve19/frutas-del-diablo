@@ -1,14 +1,16 @@
 import { Route, Routes } from "react-router-dom";
-import { Home } from "./pages/Home";
-import { SignIn } from "./pages/SignIn";
-import { SignUp } from "./pages/SignUp";
+import {
+    FavoriteFruits,
+    FruitHistory,
+    FruitPage,
+    Home,
+    MyFruits,
+    Profile,
+    RegisterFruit,
+    SignIn,
+    SignUp,
+} from "./pages";
 import { HomeLayout } from "./common/HomeLayout";
-import { FruitHistory } from "./pages/FruitHistory";
-import { FruitPage } from "./pages/FruitPage";
-import { MyFruits } from "./pages/MyFruits";
-import { Profile } from "./pages/Profile";
-import { RegisterFruit } from "./pages/RegisterFruit";
-import { FavoriteFruits } from "./pages/FavoriteFruits";
 import DataProvider from "./context/DataContext";
 
 export const Router = () => {

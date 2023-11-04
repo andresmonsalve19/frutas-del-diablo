@@ -1,4 +1,4 @@
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { BsHeart, BsArrowLeftCircle } from "react-icons/bs";
 import { Link } from "react-router-dom";
@@ -6,15 +6,14 @@ import { Link } from "react-router-dom";
 export const FruitPage = () => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    var name = urlParams.get("name");
-    var color = urlParams.get("color");
-    var power = urlParams.get("power");
-    var eater = urlParams.get("eater");
-    var type = urlParams.get("type");
-    var image = urlParams.get("image");
-    var id = urlParams.get("id");
-    var description_fruit = urlParams.get("description_fruit");
-
+    let name = urlParams.get("name");
+    let color = urlParams.get("color");
+    let power = urlParams.get("power");
+    let eater = urlParams.get("eater");
+    let type = urlParams.get("type");
+    let image = urlParams.get("image");
+    let id = urlParams.get("id");
+    let description_fruit = urlParams.get("description_fruit");
     image += `&id=${id}`;
 
     return (
@@ -175,7 +174,7 @@ export const FruitPage = () => {
                         <Grid item>
                             <Link to="/historial">
                                 <Typography
-                                    variant="overline"
+                                    letiant="overline"
                                     sx={{ color: "#C0CAC4" }}
                                 >
                                     Ver historial de versiones

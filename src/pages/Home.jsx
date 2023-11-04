@@ -10,7 +10,7 @@ export const Home = () => {
     const [textFilter, setTextFilter] = useState("")
 
     if (textFilter != "") {
-        var newData = []
+        let newData = []
         data.map(function (i) {
             if (i["name"].toLowerCase().search(textFilter.toLowerCase()) != -1) {
                 newData.push(i)
@@ -21,7 +21,7 @@ export const Home = () => {
 
     return (
         <Container maxWidth="xl">
-            <PageTitle title="Frutas del Diablo" variant="h1" />
+            <PageTitle title="Frutas del Diablo" letiant="h1" />
             <SearchBar filtering={setTextFilter}/>
             <FruitCardCreator data={data} />
         </Container>
