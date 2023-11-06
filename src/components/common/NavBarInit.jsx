@@ -13,7 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import HomeIcon from "@mui/icons-material/Home";
 import { Link } from "react-router-dom";
 
-const pages = ["Mis Frutas"];
+const pages = ["Iniciar", "Registrarse"];
 
 export const NavBarInit = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
@@ -85,6 +85,20 @@ export const NavBarInit = () => {
                             }}
                         >
                             {/* Poner aqui los items del menú desplegable */}
+                            <Link to="iniciar-sesion">
+                                <MenuItem key={pages[0]}>
+                                    <Typography textAlign="center" sx={{ color: "white" }}>
+                                        {pages[0]}
+                                    </Typography>
+                                </MenuItem>
+                            </Link>
+                            <Link to="registro">
+                                <MenuItem key={pages[1]}>
+                                    <Typography textAlign="center" sx={{ color: "white" }}>
+                                        {pages[1]}
+                                    </Typography>
+                                </MenuItem>
+                            </Link>
                         </Menu>
                     </Box>
                     <Typography
@@ -109,14 +123,14 @@ export const NavBarInit = () => {
                             flexGrow: 1,
                             display: { xs: "none", md: "flex" },
                         }}
-                    >
-                    </Box>
+                    ></Box>
 
                     <Box sx={{ flexGrow: 0 }}>
                         <ButtonGroup
                             disableElevation
                             variant="contained"
                             aria-label="Disabled elevation buttons"
+                            sx={{ display: { xs: "none", md: "block" } }}
                         >
                             <Link to="/iniciar-sesion">
                                 <Button variant="outlined">

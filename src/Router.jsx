@@ -26,8 +26,8 @@ export const Router = () => {
                     <Route path="favoritas" element={<FavoriteFruits />} />
                     <Route path="registrar-fruta" element={<RegisterFruit />} />
                 </Route>
-                <Route path="/iniciar-sesion" element={<SignIn />} />
-                <Route path="/registro" element={<SignUp />} />
+                <Route path="iniciar-sesion" element={<SignIn />} />
+                <Route path="registro" element={<SignUp />} />
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </DataProvider>

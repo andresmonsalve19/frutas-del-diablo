@@ -9,7 +9,7 @@ export const UpperBar = () => {
             container
             direction="row"
             justifyContent="center"
-            style={{ marginTop: "40px" }}
+            sx={{ mt: 4 }}
         >
             <Grid item xs={9} style={{ fontSize: "30px" }}>
                 <Link to="/">

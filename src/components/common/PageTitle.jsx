@@ -6,7 +6,11 @@ export const PageTitle = ({ title, variant }) => {
             <Typography
                 variant={variant}
                 textAlign="center"
-                sx={{ fontWeight: "bold", mt: 4 }}
+                sx={{
+                    fontWeight: "bold",
+                    mt: 4,
+                    fontSize: { xs: "1.5em", sm: "2em", md: "3em" },
+                }}
             >
                 {title}
             </Typography>

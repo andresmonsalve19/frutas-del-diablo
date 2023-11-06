@@ -22,25 +22,33 @@ export const FruitDetail = () => {
                 container
                 justifyContent="center"
                 sx={{
-                    backgroundColor: "black",
-                    height: "100%",
+                    background: "black",
+                    height: "100vh",
                     color: "white",
                     p: 1,
-                    width: "100%",
-                    minWidth: 300
+                    width: "100vw",
+                    minWidth: 300,
                 }}
             >
                 <Grid
                     item
                     container
-                    flexDirection="column"
+                    flexDirection="row"
                     justifyContent="center"
-                    alignItems="center"
                     xs={12}
                     sm={10}
                     md={8}
                     lg={6}
-                    sx={{ background: "#1e1e1e", pb: 4, minWidth: 300, width: 600}}
+                    sx={{
+                        background: "#1e1e1e",
+                        mt: 0,
+                        pb: 4,
+                        minWidth: 300,
+                        width: {
+                            xs: 250,
+                            md: 1800,
+                        },
+                    }}
                 >
                     <UpperBar />
                     <FruitNameTitle name={name} />
