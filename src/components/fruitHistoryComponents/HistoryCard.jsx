@@ -1,6 +1,7 @@
 import { Container, Typography } from "@mui/material";
 import { HistoryItem } from "./HistoryItem";
-import { fruitChagesHistory } from "../../helpers/fruitChangesHistory";
+import { fruitChagesHistory } from "../../Data";
+
 
 const historyElements = fruitChagesHistory;
 

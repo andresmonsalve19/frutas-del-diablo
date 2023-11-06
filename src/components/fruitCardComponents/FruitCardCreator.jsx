@@ -23,7 +23,7 @@ export const FruitCardCreator = ({ data }) => {
                         >
                             <Link
                                 key={json.id}
-                                to={`/fruta?name=${json.name}&color=${json.color}&power=${json.power}&eater=${json.eater}&type=${json.type}&image=${json.image}&description_fruit=${json.description_fruit}`}
+                                to={`/fruta/${json.id}`}
                             >
                                 <FruitCard
                                     key={json.id}

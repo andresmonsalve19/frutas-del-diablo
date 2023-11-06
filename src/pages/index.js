@@ -1,6 +1,6 @@
 export * from './FavoriteFruits';
 export * from './FruitHistory';
-export * from './FruitPage';
+export * from './FruitDetail';
 export * from './Home';
 export * from './MyFruits';
 export * from './Profile';

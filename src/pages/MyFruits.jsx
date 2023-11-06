@@ -1,8 +1,8 @@
 import { Container } from "@mui/material";
-import { PageTitle } from "../common/PageTitle";
-import { createdFruits } from "../helpers/createdFruits";
-import { FruitCardCreator } from "../components/fruitDetailsPage/FruitCardCreator";
-import { SearchBar } from "../components/home/SearchBar";
+import { PageTitle } from "../components/common/PageTitle";
+import { createdFruits } from "../Data/createdFruits";
+import { FruitCardCreator } from "../components/fruitCardComponents/FruitCardCreator";
+import { SearchBar } from "../components/homeComponents/SearchBar";
 import { useState } from "react";
 
 export const MyFruits = () => {

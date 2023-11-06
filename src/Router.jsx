@@ -1,8 +1,8 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import {
     FavoriteFruits,
     FruitHistory,
-    FruitPage,
+    FruitDetail,
     Home,
     MyFruits,
     Profile,
@@ -10,7 +10,7 @@ import {
     SignIn,
     SignUp,
 } from "./pages";
-import { HomeLayout } from "./common/HomeLayout";
+import { HomeLayout } from "./components/common/HomeLayout";
 import DataProvider from "./context/DataContext";
 
 export const Router = () => {
@@ -19,7 +19,7 @@ export const Router = () => {
             <Routes>
                 <Route path="/" element={<HomeLayout />}>
                     <Route path="/" element={<Home />} />
-                    <Route path="fruta" element={<FruitPage />} />
+                    <Route path="fruta/:fruitId" element={<FruitDetail />} />
                     <Route path="historial" element={<FruitHistory />} />
                     <Route path="mis-frutas" element={<MyFruits />} />
                     <Route path="mi-perfil" element={<Profile />} />
@@ -28,6 +28,7 @@ export const Router = () => {
                 </Route>
                 <Route path="/iniciar-sesion" element={<SignIn />} />
                 <Route path="/registro" element={<SignUp />} />
+                <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </DataProvider>
     );

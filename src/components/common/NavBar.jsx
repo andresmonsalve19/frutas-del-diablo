@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import HomeIcon from "@mui/icons-material/Home";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { DataContext } from "../context/DataContext";
+import { DataContext } from "../../context/DataContext";
 
 const pages = ["Mis Frutas", "Favoritas", "Registrar Fruta"];
 const settings = ["Mi Perfil", "Cerrar Sesión"];

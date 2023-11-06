@@ -1,5 +1,5 @@
 import { Container } from "@mui/material";
-import { PageTitle } from "../common/PageTitle";
+import { PageTitle } from "../components/common/PageTitle";
 
 export const Profile = () => {
     return (

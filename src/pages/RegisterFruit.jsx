@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { NavBarInit } from "../common/NavBarInit";
+import { NavBarInit } from "../components/common/NavBarInit";
 
 export const RegisterFruit = () => {
     const navigate = useNavigate();

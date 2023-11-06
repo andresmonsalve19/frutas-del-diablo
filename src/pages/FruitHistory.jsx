@@ -1,6 +1,5 @@
 import { Container } from "@mui/material";
-import { HistoryCard } from "../components/fruit_history/HistoryCard";
-import { PageTitle } from "../common/PageTitle";
+import { HistoryCard, PageTitle } from "../components";
 
 export const FruitHistory = () => {
     return (
