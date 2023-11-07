@@ -1,8 +1,7 @@
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import { FruitResumeAttribute } from "./fruitResumeComponents";
 
 export const FruitResume = ({ fruit }) => {
-    console.log(fruit);
     const { image, type, color, power, eater } = fruit;
 
     return (
@@ -12,6 +11,7 @@ export const FruitResume = ({ fruit }) => {
             flexDirection="row"
             justifyContent="center"
             alignItems="center"
+            alignContent="center"
             sx={{ mt: 4 }}
         >
             <Grid
@@ -19,7 +19,6 @@ export const FruitResume = ({ fruit }) => {
                 xs={12}
                 sm={12}
                 md={6}
-                lg={6}
                 sx={{
                     borderColor: "white",
                     textAlign: "center",

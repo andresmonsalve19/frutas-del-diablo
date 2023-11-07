@@ -7,31 +7,29 @@ export const FruitCardCreator = ({ data }) => {
 
     return (
         <>
-            <Grid container direction="row" justifyContent="center">
+            <Grid
+                container
+                flexDirection="row"
+                justifyContent="center"
+                alignContent="center"
+            >
                 {data.map((json) => {
                     i += 1;
                     return (
                         <Grid
                             item
-                            xs={5.5}
-                            sm={5.2}
+                            xs={12}
+                            sm={6}
                             md={4}
-                            lg={3.55}
-                            xl={2.7}
+                            lg={3}
                             key={json.id}
-                            style={{ marginBottom: "80px" }}
+                            sx={{
+                                display: "flex",
+                                justifyContent: "center",
+                                textAlign: "center",
+                            }}
                         >
-                            <Link
-                                key={json.id}
-                                to={`/fruta/${json.id}`}
-                            >
-                                <FruitCard
-                                    key={json.id}
-                                    name={json.name}
-                                    image={json.image}
-                                    description={json.description_card}
-                                />
-                            </Link>
+                            <FruitCard key={json.id} json={json} />
                         </Grid>
                     );
                 })}

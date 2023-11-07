@@ -1,57 +1,74 @@
 import { motion } from "framer-motion";
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
+import {Card, CardContent, CardMedia, Typography, Grid} from "@mui/material";
 import { BsHeart, BsPlusCircle } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
-export const FruitCard = ({ name, image, description }) => {
-
+export const FruitCard = ({ json }) => {
+    const { id, name, image, description_card } = json;
     return (
         <>
-            <motion.h1 whileHover={{ scale: 0.9 }}>
-                <Card className="fruit_card" sx={{
+            <Card
+                className="fruit_card"
+                sx={{
                     width: {
-                        xs: 150,
-                        sm: 200,
-                        md: 200,
-                        lg: 220,
-                        xl: 220,
-                    }
-                }}>
-                    <CardMedia className="fruit_card" sx={{
+                        xs: 250,
+                    },
+                    mb: 8,
+                    borderRadius: 2,
+                }}
+            >
+                <CardMedia
+                    className="fruit_card"
+                    sx={{
                         height: {
-                            xs: 150,
-                            sm: 200,
-                            md: 200,
-                            lg: 220,
-                            xl: 220,
-                        }
-                    }} image={image} title="Fruit" />
-                    <CardContent>
-                        <Typography style={{ fontSize: "20px" }}>
-                            {name}
-                        </Typography>
-                        <Typography style={{ fontSize: "12px" }}>
-                            {description}
-                        </Typography>
-                        <Grid container direction="row" justifyContent="center" id="card_creator_container">
-                            <Grid item xs={9} sm={9} md={9} lg={9} xl={9}>
-                                <Typography style={{ fontSize: "20px", marginTop: "20px" }}>
+                            xs: 200,
+                        },
+                    }}
+                    image={image}
+                    title="Fruit"
+                />
+                <CardContent>
+                    <Typography style={{ fontSize: "20px" }}>{name}</Typography>
+                    <Typography style={{ fontSize: "12px", marginTop: "16px" }}>
+                        {description_card}
+                    </Typography>
+                    <Grid
+                        container
+                        direction="row"
+                        justifyContent="space-between"
+                        sx={{ height: 70 }}
+                        id="card_creator_container"
+                    >
+                        <Grid item sx={{ ml: 2, mb: 0, mt: 2 }}>
+                            <motion.h1 whileHover={{ scale: 0.9 }}>
+                                <Typography
+                                    style={{
+                                        fontSize: "22px",
+                                        marginTop: "22px",
+                                    }}
+                                >
                                     <BsHeart />
                                 </Typography>
-                            </Grid>
-                            <Grid item xl={0}>
-                                <Typography style={{ fontSize: "20px", marginTop: "20px" }}>
-                                    <BsPlusCircle />
-                                </Typography>
-                            </Grid>
+                            </motion.h1>
                         </Grid>
-                    </CardContent>
-                </Card>
-            </motion.h1>
+                        <Grid item sx={{ mr: 2, mb: 0, mt: 2 }}>
+                            <motion.h1 whileHover={{ scale: 0.9 }}>
+                                <Link key={id} to={`/fruta/${json.id}`}>
+                                    <Typography
+                                        style={{
+                                            fontSize: "22px",
+                                            marginTop: "22px",
+                                            color: "white"
+                                        }}
+                                    >
+                                        <BsPlusCircle />
+                                    </Typography>
+                                </Link>
+                            </motion.h1>
+                        </Grid>
+                    </Grid>
+                </CardContent>
+            </Card>
         </>
-    )
-
+    );
 };

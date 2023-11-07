@@ -3,7 +3,7 @@ import { Grid, Typography } from "@mui/material";
 export const FruitNameTitle = ({ name }) => {
     return (
         <Grid item container direction="row" justifyContent="center">
-            <Grid item sx={{ mt: 4 }}>
+            <Grid item sx={{ mt: 1 }}>
                 <Typography
                     sx={{
                         fontSize: {

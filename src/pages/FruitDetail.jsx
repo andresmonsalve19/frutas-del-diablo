@@ -1,11 +1,5 @@
 import Grid from "@mui/material/Grid";
-import {
-    FruitDescription,
-    FruitNameTitle,
-    FruitResume,
-    NavigateToHistory,
-    UpperBar,
-} from "../components";
+import { FruitDescription, FruitNameTitle, FruitResume, NavigateToHistory, UpperBar } from "../components";
 import { useParams } from "react-router-dom";
 import { fruitDetails } from "../Data";
 
@@ -50,7 +44,7 @@ export const FruitDetail = () => {
                         },
                     }}
                 >
-                    <UpperBar />
+                    <UpperBar id={fruitId} />
                     <FruitNameTitle name={name} />
                     <FruitResume fruit={currentFruit} />
                     <FruitDescription descriptionFruit={description_fruit} />

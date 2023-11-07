@@ -1,29 +1,16 @@
 import { Container } from "@mui/material";
-import { PageTitle } from "../components/common/PageTitle";
-import { createdFruits } from "../Data/createdFruits";
-import { FruitCardCreator } from "../components/fruitCardComponents/FruitCardCreator";
-import { SearchBar } from "../components/homeComponents/SearchBar";
-import { useState } from "react";
+import { PageTitle, FruitCardCreator, SearchBar } from "../components";
+import { createdFruits } from "../Data";
+import { useFruitFilter } from "../hooks";
 
 export const MyFruits = () => {
-    let fruitsCreated = createdFruits
-    const [textFilter, setTextFilter] = useState("")
-
-    if (textFilter != "") {
-        var newData = []
-        fruitsCreated.map(function (i) {
-            if (i["name"].toLowerCase().search(textFilter.toLowerCase()) != -1) {
-                newData.push(i)
-            }
-        })
-        fruitsCreated = newData
-    }
+    const {fruitsFiltered, setTextFilter} = useFruitFilter(createdFruits)
 
     return (
         <Container maxWidth="xl">
             <PageTitle title="Mis Frutas" variant="h2" />
             <SearchBar filtering={setTextFilter}/>
-            <FruitCardCreator data={fruitsCreated} />
+            <FruitCardCreator data={fruitsFiltered} />
         </Container>
     );
 };

@@ -9,6 +9,7 @@ import {
     RegisterFruit,
     SignIn,
     SignUp,
+    EditFruit,
 } from "./pages";
 import { HomeLayout } from "./components/common/HomeLayout";
 import DataProvider from "./context/DataContext";
@@ -25,6 +26,7 @@ export const Router = () => {
                     <Route path="mi-perfil" element={<Profile />} />
                     <Route path="favoritas" element={<FavoriteFruits />} />
                     <Route path="registrar-fruta" element={<RegisterFruit />} />
+                    <Route path="editar-fruta/:fruitId" element={<EditFruit />} />
                 </Route>
                 <Route path="iniciar-sesion" element={<SignIn />} />
                 <Route path="registro" element={<SignUp />} />

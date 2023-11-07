@@ -9,7 +9,7 @@ export const HomeLayout = () => {
     const { isAuth } = useContext(DataContext);
 
     return (
-        <Box sx={{minWidth: 300}}>
+        <Box sx={{minWidth: "300px"}}>
             {isAuth ? <NavBar /> : <NavBarInit />}
             <Outlet />
         </Box>

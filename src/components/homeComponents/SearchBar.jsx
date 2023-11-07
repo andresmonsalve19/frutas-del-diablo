@@ -9,7 +9,7 @@ export const SearchBar = ({ filtering }) => {
                 direction="row"
                 justifyContent="center"
             >
-                <Grid item xs={8}>
+                <Grid item xs={12} sm={10} md={8}>
                     <TextField
                         fullWidth
                         id="outlined-basic"
