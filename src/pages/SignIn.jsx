@@ -8,7 +8,7 @@ import {
     Button,
 } from "@mui/material";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 
