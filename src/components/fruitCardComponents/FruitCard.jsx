@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
-import {Card, CardContent, CardMedia, Typography, Grid} from "@mui/material";
+import { Card, CardContent, CardMedia, Typography, Grid } from "@mui/material";
 import { BsHeart, BsPlusCircle } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 export const FruitCard = ({ json }) => {
-    const { id, name, image, description_card } = json;
+    const { id, name, description } = json;
+    const fruitimage_set = json["fruitimage_set"][0]["image"]
+    console.log(fruitimage_set)
+
     return (
         <>
             <Card
@@ -24,13 +27,13 @@ export const FruitCard = ({ json }) => {
                             xs: 200,
                         },
                     }}
-                    image={image}
+                    image={fruitimage_set}
                     title="Fruit"
                 />
                 <CardContent>
                     <Typography style={{ fontSize: "20px" }}>{name}</Typography>
                     <Typography style={{ fontSize: "12px", marginTop: "16px" }}>
-                        {description_card}
+                        {description}
                     </Typography>
                     <Grid
                         container
