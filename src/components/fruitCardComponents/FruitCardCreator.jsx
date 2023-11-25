@@ -1,6 +1,5 @@
 import Grid from "@mui/material/Grid";
 import { FruitCard } from "./FruitCard";
-import { Link } from "react-router-dom";
 
 export const FruitCardCreator = ({ data }) => {
     let i = -1;

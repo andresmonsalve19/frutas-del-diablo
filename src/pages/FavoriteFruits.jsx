@@ -1,9 +1,9 @@
 import { Container } from "@mui/material";
-import { favoriteFruits } from "../Data";
 import { SearchBar, FruitCardCreator, PageTitle } from "../components";
-import { useFruitFilter } from "../hooks";
+import { useFavoriteFruits, useFruitFilter } from "../hooks";
 
 export const FavoriteFruits = () => {
+    const {favoriteFruits} = useFavoriteFruits()
     const {fruitsFiltered, setTextFilter} = useFruitFilter(favoriteFruits);
 
     return (

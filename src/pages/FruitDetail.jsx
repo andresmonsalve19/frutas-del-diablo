@@ -5,6 +5,7 @@ import { fruitDetails } from "../Data";
 
 export const FruitDetail = () => {
     const { fruitId } = useParams();
+
     const currentFruit = fruitDetails.find(
         (fruit) => fruit.id.toString() === fruitId
     );
@@ -44,7 +45,7 @@ export const FruitDetail = () => {
                         },
                     }}
                 >
-                    <UpperBar id={fruitId} />
+                    <UpperBar fruit={currentFruit} />
                     <FruitNameTitle name={name} />
                     <FruitResume fruit={currentFruit} />
                     <FruitDescription descriptionFruit={description_fruit} />

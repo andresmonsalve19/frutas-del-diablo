@@ -1,20 +1,15 @@
 import { motion } from "framer-motion";
-import {
-    Card,
-    CardContent,
-    CardMedia,
-    Typography,
-    Grid,
-    Checkbox,
-} from "@mui/material";
-import { BsHeart, BsPlusCircle } from "react-icons/bs";
+import { Card, CardContent, CardMedia, Typography, Grid } from "@mui/material";
+import { BsPlusCircle } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { Favorite, FavoriteBorder } from "@mui/icons-material";
-
-const label = { inputProps: { "aria-label": "Checkbox demo" } };
+import { useContext } from "react";
+import { DataContext } from "../../context/DataContext";
+import { FavoriteFruitIcon } from "./FavoriteFruitIcon";
 
 export const FruitCard = ({ json }) => {
+    const {isAuth} = useContext(DataContext)
     const { id, name, image, description_card } = json;
+
     return (
         <>
             <Card
@@ -39,37 +34,37 @@ export const FruitCard = ({ json }) => {
                 />
                 <CardContent>
                     <Typography style={{ fontSize: "20px" }}>{name}</Typography>
-                    <Typography style={{ fontSize: "12px", marginTop: "16px", height: 70 }}>
+                    <Typography
+                        style={{
+                            fontSize: "12px",
+                            marginTop: "16px",
+                            height: 70,
+                        }}
+                    >
                         {description_card}
                     </Typography>
                     <Grid
                         container
                         flexDirection="row"
-                        alignItems="flex-end"
+                        alignItems="center"
                         alignContent="center"
-                        justifyContent="space-between"
-                        sx={{ height: 40, mt: 2}}
+                        justifyContent={isAuth ? "space-between" : "center"}
+                        sx={{ height: 40, mt: 2 }}
                         id="card_creator_container"
                     >
+                            {
+                                isAuth
+                                ?   <FavoriteFruitIcon fruit={json} />
+                                : undefined
+                            }
                         <Grid item>
                             <motion.h1 whileHover={{ scale: 0.9 }}>
-                                <Checkbox
-                                    sx={{
-                                        "& .MuiSvgIcon-root": { fontSize: 25 },
-                                    }}
-                                    icon={<FavoriteBorder />}
-                                    checkedIcon={<Favorite />}
-                                />
-                            </motion.h1>
-                        </Grid>
-                        <Grid item>
-                            <motion.h1 whileHover={{ scale: 0.9 }}>
-                                <Link key={id} to={`/fruta/${json.id}`}>
+                                <Link key={id} to={`/fruta/${json.id}`} title="Ver más información de esta fruta">
                                     <BsPlusCircle
                                         style={{
                                             fontSize: 22,
                                             color: "white",
-                                            marginRight: 8
+                                            marginRight: 8,
                                         }}
                                     />
                                 </Link>
