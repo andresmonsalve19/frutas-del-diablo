@@ -8,6 +8,7 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+import { FavoriteFruitsProvider } from "./context/FavoriteFruitsContext.jsx";
 
 const theme = createTheme(themeOptions);
 
@@ -15,9 +16,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <BrowserRouter>
-                <Router />
-            </BrowserRouter>
+            <FavoriteFruitsProvider>
+                <BrowserRouter>
+                    <Router />
+                </BrowserRouter>
+            </FavoriteFruitsProvider>
         </ThemeProvider>
     </React.StrictMode>
 );

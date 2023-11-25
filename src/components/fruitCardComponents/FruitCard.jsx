@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardMedia, Typography, Grid } from "@mui/material";
-import { BsHeart, BsPlusCircle } from "react-icons/bs";
+import { BsPlusCircle } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { DataContext } from "../../context/DataContext";
+import { FavoriteFruitIcon } from "./FavoriteFruitIcon";
 
 export const FruitCard = ({ json }) => {
-    const { id, name, description_short, description, type_l, color, power, consumer} = json;
+    const { id, name, description_short, description, type_l, color, power, consumer } = json;
     const fruitimage_set = json["fruitimage_set"][0]["image"]
 
     return (
@@ -36,35 +39,28 @@ export const FruitCard = ({ json }) => {
                     </Typography>
                     <Grid
                         container
-                        direction="row"
-                        justifyContent="space-between"
-                        sx={{ height: 70 }}
+                        flexDirection="row"
+                        alignItems="center"
+                        alignContent="center"
+                        justifyContent={isAuth ? "space-between" : "center"}
+                        sx={{ height: 40, mt: 2 }}
                         id="card_creator_container"
                     >
-                        <Grid item sx={{ ml: 2, mb: 0, mt: 2 }}>
-                            <motion.h1 whileHover={{ scale: 0.9 }}>
-                                <Typography
-                                    style={{
-                                        fontSize: "22px",
-                                        marginTop: "22px",
-                                    }}
-                                >
-                                    <BsHeart />
-                                </Typography>
-                            </motion.h1>
-                        </Grid>
-                        <Grid item sx={{ mr: 2, mb: 0, mt: 2 }}>
+                        {
+                            isAuth
+                                ? <FavoriteFruitIcon fruit={json} />
+                                : undefined
+                        }
+                        <Grid item>
                             <motion.h1 whileHover={{ scale: 0.9 }}>
                                 <Link key={id} to={`/fruta?id=${json.id}&name=${name}&description=${description}&type_l=${type_l}&color=${color}&power=${power}&consumer=${consumer}&image=${fruitimage_set}`}>
-                                    <Typography
+                                    <BsPlusCircle
                                         style={{
-                                            fontSize: "22px",
-                                            marginTop: "22px",
-                                            color: "white"
+                                            fontSize: 22,
+                                            color: "white",
+                                            marginRight: 8,
                                         }}
-                                    >
-                                        <BsPlusCircle />
-                                    </Typography>
+                                    />
                                 </Link>
                             </motion.h1>
                         </Grid>
