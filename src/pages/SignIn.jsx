@@ -7,14 +7,15 @@ import {
     Typography,
     Button,
 } from "@mui/material";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
+import { useState, useEffect, useContext } from "react";
 
 export const SignIn = () => {
     const navigate = useNavigate()
     const { setIsAuth } = useContext(DataContext)
+    const [doneRequest, setDoneRequest] = useState(false)
+    const [response, setResponse] = useState(false)
     const [loginData, setLoginData] = useState({
         username: "",
         password: "",
@@ -24,11 +25,32 @@ export const SignIn = () => {
         setLoginData({ ...loginData, [e.target.name]: e.target.value });
     };
 
+    useEffect(() => {
+        if (doneRequest) {
+            if (response["access_token"] != undefined) {
+                localStorage.setItem("access_token", response["access_token"]);
+                localStorage.setItem("session", true)
+                setIsAuth(true)
+                navigate("/")
+                location.reload()
+            } else {
+                alert("Usuario o contraseña incorrecto")
+            }
+        }
+    }, [response, doneRequest])
+
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log(loginData);
-        setIsAuth(true)
-        navigate("/")
+        let username = loginData["username"]
+        let password = loginData["password"]
+
+        let awo = JSON.stringify({ "username": username, "password": password })
+
+        const requestOptions = { method: 'POST', body: awo, headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' } }
+        fetch(`http://localhost:8000/api/accounts/login/`, requestOptions)
+            .then(res => res.json())
+            .then(res => setResponse(res))
+            .then(() => setDoneRequest(true))
     };
 
     return (
@@ -67,7 +89,7 @@ export const SignIn = () => {
                                 margin="normal"
                                 type="text"
                                 fullWidth
-                                label="Email"
+                                label="Usuario"
                                 onChange={dataLogin}
                                 sx={{ mt: 2, mb: 1.5 }}
                                 required
@@ -77,7 +99,7 @@ export const SignIn = () => {
                                 margin="normal"
                                 type="password"
                                 fullWidth
-                                label="Password"
+                                label="Contraseña"
                                 onChange={dataLogin}
                                 sx={{ mt: 1.5, mb: 1.5 }}
                                 required

@@ -5,10 +5,10 @@ export const DataContext = createContext()
 
 const DataProvider = ({ children }) => {
 
-    const [isAuth, setIsAuth] = useState(false)
+    let [isAuth, setIsAuth] = useState(localStorage.getItem("session"))
     const [cacheFinish1, setCacheFinish1] = useState(false)
     const [allFruits, setAllFruits] = useState([])
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAwNjIzNjA5LCJpYXQiOjE3MDAwMTg4MDksImp0aSI6IjBhZmJjNjc1NjU5MTRkMTk5NjUxMjY5N2Q4ZWMwZjg4IiwidXNlcl9pZCI6Mn0.wp0msygOu1-NLIrTkHfdqEx4tNXyMFuIFOGPFKlw-qs"
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMzA3NDMyLCJpYXQiOjE3MDA3MDI2MzIsImp0aSI6ImNjNDk2MWY4YTBmZTRhOWU4ZjdmOGIxMzcxNzBiOTI1IiwidXNlcl9pZCI6Mn0.w7qlv1prpf2hbhgvyOMoYPmfQYmcW-tLxDMkAPFwbKA"
 
     useEffect(() => {
         const requestOptions = { method: 'GET', headers: { 'Authorization': `Bearer ${token}` }};

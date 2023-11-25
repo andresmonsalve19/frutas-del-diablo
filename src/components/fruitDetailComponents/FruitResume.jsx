@@ -1,8 +1,7 @@
 import { Grid } from "@mui/material";
 import { FruitResumeAttribute } from "./fruitResumeComponents";
 
-export const FruitResume = ({ fruit }) => {
-    const { image, type, color, power, eater } = fruit;
+export const FruitResume = ({ image, type, color, power, eater }) => {
 
     return (
         <Grid

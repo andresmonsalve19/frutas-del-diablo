@@ -9,7 +9,7 @@ export const Home = () => {
 
     const { allFruits } = useContext(DataContext)
     const { fruitsFiltered, setTextFilter } = useFruitFilter(allFruits)
-
+    
     return (
         <Container maxWidth="xl">
             <PageTitle title="Frutas del Diablo" letiant="h1" />

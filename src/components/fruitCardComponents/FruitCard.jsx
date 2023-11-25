@@ -4,9 +4,8 @@ import { BsHeart, BsPlusCircle } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 export const FruitCard = ({ json }) => {
-    const { id, name, description } = json;
+    const { id, name, description_short, description, type_l, color, power, consumer} = json;
     const fruitimage_set = json["fruitimage_set"][0]["image"]
-    console.log(fruitimage_set)
 
     return (
         <>
@@ -33,7 +32,7 @@ export const FruitCard = ({ json }) => {
                 <CardContent>
                     <Typography style={{ fontSize: "20px" }}>{name}</Typography>
                     <Typography style={{ fontSize: "12px", marginTop: "16px" }}>
-                        {description}
+                        {description_short}
                     </Typography>
                     <Grid
                         container
@@ -56,7 +55,7 @@ export const FruitCard = ({ json }) => {
                         </Grid>
                         <Grid item sx={{ mr: 2, mb: 0, mt: 2 }}>
                             <motion.h1 whileHover={{ scale: 0.9 }}>
-                                <Link key={id} to={`/fruta/${json.id}`}>
+                                <Link key={id} to={`/fruta?id=${json.id}&name=${name}&description=${description}&type_l=${type_l}&color=${color}&power=${power}&consumer=${consumer}&image=${fruitimage_set}`}>
                                     <Typography
                                         style={{
                                             fontSize: "22px",

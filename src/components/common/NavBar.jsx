@@ -26,8 +26,10 @@ export const NavBar = () => {
     const { setIsAuth } = useContext(DataContext)
 
     function HandleCloseSession() {
-        navigate("/")
+        localStorage.setItem("session", false)
         setIsAuth(false)
+        console.log("salida")
+        //location.reload()
     }
 
     const handleOpenNavMenu = (event) => {

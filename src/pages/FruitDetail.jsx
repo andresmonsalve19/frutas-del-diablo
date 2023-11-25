@@ -1,14 +1,18 @@
 import Grid from "@mui/material/Grid";
 import { FruitDescription, FruitNameTitle, FruitResume, NavigateToHistory, UpperBar } from "../components";
 import { useParams } from "react-router-dom";
-import { fruitDetails } from "../Data";
 
 export const FruitDetail = () => {
-    const { fruitId } = useParams();
-    const currentFruit = fruitDetails.find(
-        (fruit) => fruit.id.toString() === fruitId
-    );
-    const { name, description_fruit } = currentFruit;
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    let id = urlParams.get('id')
+    let name = urlParams.get('name')
+    let description = urlParams.get('description')
+    let type_l = urlParams.get('type_l')
+    let color = urlParams.get('color')
+    let power = urlParams.get('power')
+    let consumer = urlParams.get('consumer')
+    let image = urlParams.get('image')
 
     return (
         <>
@@ -44,10 +48,10 @@ export const FruitDetail = () => {
                         },
                     }}
                 >
-                    <UpperBar id={fruitId} />
+                    <UpperBar id={id} />
                     <FruitNameTitle name={name} />
-                    <FruitResume fruit={currentFruit} />
-                    <FruitDescription descriptionFruit={description_fruit} />
+                    <FruitResume image={image} type={type_l} color={color} power={power} eater={consumer} />
+                    <FruitDescription descriptionFruit={description} />
                     <NavigateToHistory />
                 </Grid>
             </Grid>

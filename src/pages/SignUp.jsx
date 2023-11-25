@@ -9,21 +9,23 @@ import {
     Checkbox,
     FormControlLabel,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 
 export const SignUp = () => {
-    const navigate = useNavigate();
 
+    const navigate = useNavigate();
     const { setIsAuth } = useContext(DataContext)
+    const [doneRequest, setDoneRequest] = useState(false)
+    const [response, setResponse] = useState(false)
     const [userData, setUserData] = useState({
-        names: "",
-        lastNames: "",
+        first_name: "",
+        last_name: "",
         email: "",
-        phoneNumber: "",
-        password: "",
+        username: "",
+        password1: "",
     });
 
     const setData = (e) => {
@@ -34,8 +36,24 @@ export const SignUp = () => {
         e.preventDefault();
         console.log(userData);
         setIsAuth(true)
-        navigate("/")
+        userData["password2"] = userData["password1"]
+
+        const requestOptions = { method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(userData)};
+        fetch(`http://127.0.0.1:8000/api/accounts/signup/`, requestOptions)
+            .then(res => res.json())
+            .then(res => setResponse(res))
+            .then(setDoneRequest(true))
+            
     };
+
+    useEffect(() => {
+        if (response["access_token"] !== undefined){
+            window.alert("El usuario fue creado")
+            navigate("/")
+        }else{
+            window.alert("El usuario no fue creado")
+        }
+    }, [doneRequest])
 
     return (
         <Container maxWidth="md">
@@ -73,7 +91,7 @@ export const SignUp = () => {
                             onSubmit={onSubmit}
                         >
                             <TextField
-                                name="names"
+                                name="first_name"
                                 margin="normal"
                                 type="text"
                                 fullWidth
@@ -83,7 +101,7 @@ export const SignUp = () => {
                                 required
                             />
                             <TextField
-                                name="lastNames"
+                                name="last_name"
                                 margin="normal"
                                 type="text"
                                 fullWidth
@@ -103,21 +121,21 @@ export const SignUp = () => {
                                 required
                             />
                             <TextField
-                                name="phoneNumber"
+                                name="username"
                                 margin="normal"
                                 type="tel"
                                 fullWidth
-                                label="Teléfono"
+                                label="Usuario"
                                 onChange={setData}
                                 sx={{ mt: 2, mb: 1.5 }}
                                 required
                             />
                             <TextField
-                                name="password"
+                                name="password1"
                                 margin="normal"
                                 type="password"
                                 fullWidth
-                                label="Password"
+                                label="Contraseña"
                                 onChange={setData}
                                 sx={{ mt: 1.5, mb: 1.5 }}
                                 required
