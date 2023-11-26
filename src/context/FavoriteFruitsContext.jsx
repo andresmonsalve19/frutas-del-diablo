@@ -1,30 +1,33 @@
-import { useState } from "react";
 import { createContext } from "react";
+import { useFavoriteFruitsReducer } from "../hooks/useFavoriteFruitsReducer";
+import { DataContext } from "../context/DataContext";
+import { useContext } from 'react'
 
 export const FavoriteFruitsContext = createContext();
 
 export const FavoriteFruitsProvider = ({ children }) => {
-    const [favoriteFruits, setFavoriteFruits] = useState([]);
+    const { myFruitsFavorite } = useContext(DataContext)
+    const { setMyFruitsFavorite } = useContext(DataContext)
 
-    const addToFavoriteFruits = (favoriteFruit) => {
-        // Verificar si la fruta ya está en favoritas
-        const fruitInFavoritesIndex = favoriteFruits.findIndex(
-            (item) => item.id === favoriteFruit.id
+    function addToFavoriteFruits(fruit) {
+        const fruitInFavoritesIndex = myFruitsFavorite.findIndex(
+            (item) => item.id === fruit.id
         );
         if (fruitInFavoritesIndex >= 0) {
             console.log("Esta fruta ya fue agregada a favorita");
             return;
         }
-        setFavoriteFruits([...favoriteFruits, favoriteFruit]);
-    };
+        setMyFruitsFavorite([...myFruitsFavorite, fruit])
 
-    const deleteFavoriteFruit = (fruit) => {
-        setFavoriteFruits(prevState => prevState.filter(item => item.id !== fruit.id))
-    };
+    }
+
+    function deleteFavoriteFruit(fruit) {
+        setMyFruitsFavorite(myFruitsFavorite.filter(item => Number(item.id) !== Number(fruit.id)))
+    }
 
     return (
         <FavoriteFruitsContext.Provider
-            value={{ favoriteFruits, addToFavoriteFruits, deleteFavoriteFruit }}
+            value={{ myFruitsFavorite, addToFavoriteFruits, deleteFavoriteFruit }}
         >
             {children}
         </FavoriteFruitsContext.Provider>

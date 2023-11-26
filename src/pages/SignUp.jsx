@@ -140,6 +140,26 @@ export const SignUp = () => {
                                 sx={{ mt: 1.5, mb: 1.5 }}
                                 required
                             />
+                            <TextField
+                                name="description"
+                                margin="normal"
+                                type="text"
+                                fullWidth
+                                label="Descripción"
+                                onChange={setData}
+                                sx={{ mt: 1.5, mb: 1.5 }}
+                                required
+                            />
+                            <TextField
+                                name="image"
+                                margin="normal"
+                                type="text"
+                                fullWidth
+                                label="URL imagen"
+                                onChange={setData}
+                                sx={{ mt: 1.5, mb: 1.5 }}
+                                required
+                            />
                             <FormControlLabel
                                 sx={{ mt: 1.5, mb: 1.5, ml: 1.5 }}
                                 control={<Checkbox />}

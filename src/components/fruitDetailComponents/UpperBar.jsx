@@ -10,13 +10,15 @@ import { DataContext } from "../../context/DataContext";
 import { useFavoriteFruits } from "../../hooks";
 import { FavoriteFruitIcon } from "../fruitCardComponents";
 
-export const UpperBar = ({ fruit }) => {
+export const UpperBar = ({ id }) => {
     const { isAuth } = useContext(DataContext);
-    const { favoriteFruits } = useFavoriteFruits();
-    const isFruitInFavoriteFruits = favoriteFruits.some(
-        (item) => item.id === fruit.id
+    let { myFruitsFavorite } = useFavoriteFruits();
+    if (myFruitsFavorite["detail"] === 'Authorization header must contain two space-delimited values') {
+        myFruitsFavorite = []
+    }
+    const isFruitInFavoriteFruits = myFruitsFavorite.some(
+        (item) => item.id === Number(id)
     );
-    console.log(isFruitInFavoriteFruits);
 
     return (
         <Grid
@@ -38,8 +40,8 @@ export const UpperBar = ({ fruit }) => {
                 </motion.p>
             </Grid>
             {
-                isAuth 
-                ?   (
+                isAuth == "true"
+                    ? (
                         <>
                             <Grid
                                 item
@@ -53,15 +55,15 @@ export const UpperBar = ({ fruit }) => {
                                 }}
                             >
                                 <motion.p whileHover={{ scale: 0.9 }}>
-                                    <Link to={`/editar-fruta/${fruit.id}`}>
+                                    <Link to={`/editar-fruta/${id}`}>
                                         <BsPencilSquare color="white" />
                                     </Link>
                                 </motion.p>
                             </Grid>
-                            <FavoriteFruitIcon fruit={fruit} />
+                            <FavoriteFruitIcon />
                         </>
-                    )   
-                : undefined
+                    )
+                    : undefined
             }
         </Grid>
     );

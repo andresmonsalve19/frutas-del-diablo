@@ -27,9 +27,10 @@ export const NavBar = () => {
 
     function HandleCloseSession() {
         localStorage.setItem("session", false)
+        localStorage.setItem("access_token", "")
+        localStorage.setItem("id", "")
         setIsAuth(false)
-        console.log("salida")
-        //location.reload()
+        navigate("/")
     }
 
     const handleOpenNavMenu = (event) => {

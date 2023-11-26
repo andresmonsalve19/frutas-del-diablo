@@ -30,6 +30,7 @@ export const SignIn = () => {
             if (response["access_token"] != undefined) {
                 localStorage.setItem("access_token", response["access_token"]);
                 localStorage.setItem("session", true)
+                localStorage.setItem("id", response["user"]["pk"])
                 setIsAuth(true)
                 navigate("/")
                 location.reload()

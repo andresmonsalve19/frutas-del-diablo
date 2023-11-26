@@ -9,6 +9,7 @@ import { FavoriteFruitIcon } from "./FavoriteFruitIcon";
 export const FruitCard = ({ json }) => {
     const { id, name, description_short, description, type_l, color, power, consumer } = json;
     const fruitimage_set = json["fruitimage_set"][0]["image"]
+    const { isAuth } = useContext(DataContext)
 
     return (
         <>
@@ -42,18 +43,18 @@ export const FruitCard = ({ json }) => {
                         flexDirection="row"
                         alignItems="center"
                         alignContent="center"
-                        justifyContent={isAuth ? "space-between" : "center"}
+                        justifyContent={isAuth === "true" ? "space-between" : "center"}
                         sx={{ height: 40, mt: 2 }}
                         id="card_creator_container"
                     >
                         {
-                            isAuth
-                                ? <FavoriteFruitIcon fruit={json} />
+                            isAuth === "true"
+                                ? <FavoriteFruitIcon fruit2={json} />
                                 : undefined
                         }
                         <Grid item>
                             <motion.h1 whileHover={{ scale: 0.9 }}>
-                                <Link key={id} to={`/fruta?id=${json.id}&name=${name}&description=${description}&type_l=${type_l}&color=${color}&power=${power}&consumer=${consumer}&image=${fruitimage_set}`}>
+                                <Link key={id} to={`/fruta?id=${json.id}&name=${name}&description=${description}&type_l=${type_l}&color=${color}&power=${power}&consumer=${consumer}&image=${fruitimage_set}&description_short=${description_short}`}>
                                     <BsPlusCircle
                                         style={{
                                             fontSize: 22,
