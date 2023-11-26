@@ -1,2 +1,2 @@
-export * from './useFruitFilter';
-export * from './useFavoriteFruits';
+export * from './useArrayFilter';
+export * from './useFavoriteFruitsContext';

@@ -1,20 +1,28 @@
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import { useParams } from "react-router-dom";
+import { profiles } from "../Data/profiles";
 import { ProfileResume } from "../components/profileDetailComponents/ProfileResume";
 import { ProfileInfo } from "../components/profileDetailComponents/ProfileInfo";
-import { profiles } from "../Data/profiles";
-import { Link } from "react-router-dom";
+import { createdFruits } from "../Data";
+import { Box, Typography } from "@mui/material";
+import { FruitCardCreator, SearchBar } from "../components";
+import { useArrayFilter } from "../hooks";
 
-export const Profile = () => {
-    const currentUser = profiles[1];
+export const ProfileDetail = () => {
+    const {arrayFiltered, setTextFilter} = useArrayFilter(createdFruits, "name")
+    const { profileId } = useParams();
+
+    const currentUser = profiles.find(
+        (profile) => profile.id.toString() === profileId
+    );
 
     return (
-        <Container>
+        <>
             <Grid
                 container
                 justifyContent="center"
                 sx={{
                     background: "black",
-                    height: "100vh",
                     color: "white",
                     p: 1,
                     minWidth: 300,
@@ -54,17 +62,24 @@ export const Profile = () => {
                             numberOfLikes={5}
                         />
                         <ProfileInfo user={currentUser} />
-                        <Button
-                            variant="contained"
-                            sx={{ mt: 8, width: "60%", height: 50 }}
-                        >
-                            <Link to="/mis-frutas">
-                                <Typography sx={{color: "white"}} variant="subtitle1">Ver mis frutas creadas</Typography>
-                            </Link>
-                        </Button>
                     </Grid>
                 </Box>
+                <Box sx={{ width: "100%"}}>
+                    <Typography
+                        textAlign="center"
+                        sx={{
+                            fontWeight: "bold",
+                            mt: 4,
+                            mb: 4,
+                            fontSize: { xs: "1em", sm: "1.5em", md: "2em" },
+                        }}
+                    >
+                        Frutas creadas por: {currentUser.name}
+                    </Typography>
+                    <SearchBar filtering={setTextFilter} />
+                    <FruitCardCreator data={arrayFiltered} />
+                </Box>
             </Grid>
-        </Container>
+        </>
     );
 };

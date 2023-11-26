@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { FavoriteFruitsContext } from "../context/FavoriteFruitsContext";
 
-export const useFavoriteFruits = () => {
+export const useFavoriteFruitsContext = () => {
     const context = useContext(FavoriteFruitsContext)
 
     if (context === undefined) {
-        throw new Error('useFavoriteFruits must be used within a FavoriteFruitsProvider')
+        throw new Error('useFavoriteFruitsContext must be used within a FavoriteFruitsProvider')
     }
 
     return (

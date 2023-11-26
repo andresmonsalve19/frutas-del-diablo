@@ -10,6 +10,8 @@ import {
     SignIn,
     SignUp,
     EditFruit,
+    ProfileDetail,
+    AllProfiles,
 } from "./pages";
 import { HomeLayout } from "./components/common/HomeLayout";
 
@@ -25,6 +27,8 @@ export const Router = () => {
                 <Route path="favoritas" element={<FavoriteFruits />} />
                 <Route path="registrar-fruta" element={<RegisterFruit />} />
                 <Route path="editar-fruta/:fruitId" element={<EditFruit />} />
+                <Route path="perfiles" element={<AllProfiles />} />
+                <Route path="profile/:profileId" element={<ProfileDetail />} />
             </Route>
             <Route path="iniciar-sesion" element={<SignIn />} />
             <Route path="registro" element={<SignUp />} />

@@ -7,7 +7,7 @@ import {
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { DataContext } from "../../context/DataContext";
-import { useFavoriteFruits } from "../../hooks";
+import { useFavoriteFruitsContext } from "../../hooks";
 import { FavoriteFruitIcon } from "../fruitCardComponents";
 
 export const UpperBar = ({ id }) => {
