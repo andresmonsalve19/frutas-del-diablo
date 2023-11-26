@@ -16,18 +16,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { DataContext } from "../../context/DataContext";
 
-const pages = ["Mis Frutas", "Favoritas", "Registrar Fruta"];
+const pages = ["Mis Frutas", "Favoritas", "Registrar Fruta", "Perfiles"];
 const settings = ["Mi Perfil", "Cerrar Sesión"];
 
 export const NavBar = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
-    const navigate = useNavigate()
-    const { setIsAuth } = useContext(DataContext)
+    const navigate = useNavigate();
+    const { setIsAuth } = useContext(DataContext);
 
     function HandleCloseSession() {
-        navigate("/")
-        setIsAuth(false)
+        navigate("/");
+        setIsAuth(false);
     }
 
     const handleOpenNavMenu = (event) => {
@@ -105,22 +105,41 @@ export const NavBar = () => {
                         >
                             <Link to="mis-frutas">
                                 <MenuItem key={pages[0]}>
-                                    <Typography textAlign="center" sx={{ color: "white" }}>
+                                    <Typography
+                                        textAlign="center"
+                                        sx={{ color: "white" }}
+                                    >
                                         {pages[0]}
                                     </Typography>
                                 </MenuItem>
                             </Link>
                             <Link to="favoritas">
                                 <MenuItem key={pages[1]}>
-                                    <Typography textAlign="center" sx={{ color: "white" }}>
+                                    <Typography
+                                        textAlign="center"
+                                        sx={{ color: "white" }}
+                                    >
                                         {pages[1]}
                                     </Typography>
                                 </MenuItem>
                             </Link>
                             <Link to="registrar-fruta">
                                 <MenuItem key={pages[2]}>
-                                    <Typography textAlign="center" sx={{ color: "white" }}>
+                                    <Typography
+                                        textAlign="center"
+                                        sx={{ color: "white" }}
+                                    >
                                         {pages[2]}
+                                    </Typography>
+                                </MenuItem>
+                            </Link>
+                            <Link to="perfiles">
+                                <MenuItem key={pages[3]}>
+                                    <Typography
+                                        textAlign="center"
+                                        sx={{ color: "white" }}
+                                    >
+                                        {pages[3]}
                                     </Typography>
                                 </MenuItem>
                             </Link>
@@ -172,6 +191,14 @@ export const NavBar = () => {
                                 {pages[2]}
                             </Button>
                         </Link>
+                        <Link to="perfiles">
+                            <Button
+                                key={pages[3]}
+                                sx={{ my: 2, color: "white", display: "block" }}
+                            >
+                                {pages[3]}
+                            </Button>
+                        </Link>
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
@@ -199,8 +226,20 @@ export const NavBar = () => {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-
-                            <MenuItem onClick={HandleCloseSession} key={settings[1]}>
+                            <MenuItem key={settings[0]}>
+                                <Link to="mi-perfil">
+                                    <Typography
+                                        textAlign="center"
+                                        sx={{ color: "white" }}
+                                    >
+                                        {settings[0]}
+                                    </Typography>
+                                </Link>
+                            </MenuItem>
+                            <MenuItem
+                                onClick={HandleCloseSession}
+                                key={settings[1]}
+                            >
                                 <Typography
                                     textAlign="center"
                                     sx={{ color: "white" }}

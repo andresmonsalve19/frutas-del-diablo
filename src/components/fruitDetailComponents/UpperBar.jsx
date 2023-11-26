@@ -7,12 +7,12 @@ import {
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { DataContext } from "../../context/DataContext";
-import { useFavoriteFruits } from "../../hooks";
+import { useFavoriteFruitsContext } from "../../hooks";
 import { FavoriteFruitIcon } from "../fruitCardComponents";
 
 export const UpperBar = ({ fruit }) => {
     const { isAuth } = useContext(DataContext);
-    const { favoriteFruits } = useFavoriteFruits();
+    const { favoriteFruits } = useFavoriteFruitsContext();
     const isFruitInFavoriteFruits = favoriteFruits.some(
         (item) => item.id === fruit.id
     );

@@ -8,3 +8,5 @@ export * from "./Profile";
 export * from "./RegisterFruit";
 export * from "./SignIn";
 export * from "./SignUp";
+export * from "./AllProfiles";
+export * from "./ProfileDetail";

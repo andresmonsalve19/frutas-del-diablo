@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { Grid, IconButton } from "@mui/material";
 import { BsHeart, BsFillHeartFill } from "react-icons/bs";
-import { useFavoriteFruits } from "../../hooks";
+import { useFavoriteFruitsContext } from "../../hooks";
 
 export const FavoriteFruitIcon = ({fruit}) => {
-    const {favoriteFruits, addToFavoriteFruits, deleteFavoriteFruit} = useFavoriteFruits()
+    const {favoriteFruits, addToFavoriteFruits, deleteFavoriteFruit} = useFavoriteFruitsContext()
     const isFruitInFavoriteFruits = favoriteFruits.some(item => item.id === fruit.id)
 
     return (

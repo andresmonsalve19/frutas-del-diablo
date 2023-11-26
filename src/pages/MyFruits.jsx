@@ -1,16 +1,16 @@
 import { Container } from "@mui/material";
 import { PageTitle, FruitCardCreator, SearchBar } from "../components";
 import { createdFruits } from "../Data";
-import { useFruitFilter } from "../hooks";
+import { useArrayFilter } from "../hooks";
 
 export const MyFruits = () => {
-    const {fruitsFiltered, setTextFilter} = useFruitFilter(createdFruits)
+    const {arrayFiltered, setTextFilter} = useArrayFilter(createdFruits, "name")
 
     return (
         <Container maxWidth="xl">
             <PageTitle title="Mis Frutas" variant="h2" />
             <SearchBar filtering={setTextFilter}/>
-            <FruitCardCreator data={fruitsFiltered} />
+            <FruitCardCreator data={arrayFiltered} />
         </Container>
     );
 };
