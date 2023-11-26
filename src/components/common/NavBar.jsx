@@ -207,7 +207,7 @@ export const NavBar = () => {
                                 onClick={handleOpenUserMenu}
                                 sx={{ p: 0 }}
                             >
-                                <Avatar alt="Remy Sharp" src="/" />
+                                <Avatar alt="Remy Sharp" src="https://i.pinimg.com/originals/37/8a/27/378a270e775265622393da8c0527417e.jpg" />
                             </IconButton>
                         </Tooltip>
                         <Menu

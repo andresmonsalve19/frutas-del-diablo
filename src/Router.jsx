@@ -27,13 +27,13 @@ export const Router = () => {
                     <Route path="mis-frutas" element={<MyFruits />} />
                     <Route path="perfiles" element={<AllProfiles />} />
                     <Route path="profile/:profileId" element={<ProfileDetail />} />
+                    <Route path="mi-perfil" element={<Profile />} />    
                     <Route path="favoritas" element={<FavoriteFruits />} />
                     <Route path="registrar-fruta" element={<RegisterFruit />} />
                     <Route path="editar-fruta/:fruitId" element={<EditFruit />} />
                 </Route>
                 <Route path="iniciar-sesion" element={<SignIn />} />
                 <Route path="registro" element={<SignUp />} />
-                <Route path="mi-perfil" element={<Profile />} />
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </DataProvider>
