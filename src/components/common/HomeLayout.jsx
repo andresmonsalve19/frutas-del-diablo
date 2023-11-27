@@ -1,4 +1,4 @@
-import { NavBar } from "./Navbar";
+import { NavBar } from "./NavBar";
 import { Outlet } from "react-router-dom";
 import { NavBarInit } from "./NavBarInit";
 import { useContext } from "react";

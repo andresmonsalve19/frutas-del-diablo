@@ -1,4 +1,4 @@
 export * from './HomeLayout';
-export * from './Navbar';
+export * from './NavBar';
 export * from './NavBarInit';
 export * from './PageTitle';
