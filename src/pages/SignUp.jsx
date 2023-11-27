@@ -47,8 +47,9 @@ export const SignUp = () => {
         const requestOptions = { method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(userData) };
         fetch(`http://127.0.0.1:8000/api/accounts/signup/`, requestOptions)
             .then(res => res.json())
-            .then(res => setResponse(res))
             .then(setDoneRequest(true))
+            .then(res => setResponse(res))
+            
     };
 
     useEffect(() => {

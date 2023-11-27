@@ -4,11 +4,22 @@ import { ProfileInfo } from "../components/profileDetailComponents/ProfileInfo";
 import { profiles } from "../Data/profiles";
 import { Link } from "react-router-dom";
 import { DataContext } from "../context/DataContext";
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 export const Profile = () => {
 
     const { myProfile } = useContext(DataContext)
+    const {myFruitsCreated} = useContext(DataContext)
+
+    const [profileScore, setProfileScore] = useState(0)
+
+    useEffect(() => {
+        let body = {"user_id": localStorage.getItem("id")}
+        const requestOptions = { method: 'POST', headers: { 'Authorization': `Bearer ${localStorage.getItem("access_token")}`, 'Accept': 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(body) };
+        fetch(`http://localhost:8000/api/fruits/account_score_of/`, requestOptions)
+            .then(res => res.json())
+            .then(res => setProfileScore(res))
+    }, [])
 
     return (
         <Container>
@@ -53,8 +64,8 @@ export const Profile = () => {
                             }}
                         />
                         <ProfileResume
-                            numberOfCreatedFruits={5}
-                            numberOfLikes={5}
+                            numberOfCreatedFruits={myFruitsCreated.length}
+                            numberOfLikes={profileScore["score"]}
                         />
                         <ProfileInfo user={myProfile} />
                         <Button

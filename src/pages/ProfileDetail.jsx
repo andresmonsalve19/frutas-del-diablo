@@ -22,7 +22,8 @@ export const ProfileDetail = () => {
     let last_name = urlParams.get('last_name')
     let photo_url = urlParams.get('photo_url')
     let description = urlParams.get('description')
-    let id = urlParams.get('id')
+    let id = urlParams.get('user_id')
+    const [profileScore, setProfileScore] = useState(0)
 
     let currentUser = { "username": username, "email": email, "first_name": first_name, "last_name": last_name, "photo_url": photo_url, "description": description, "id": id }
 
@@ -32,6 +33,17 @@ export const ProfileDetail = () => {
         fetch(`http://localhost:8000/api/fruits/created_by/`, requestOptions)
             .then(res => res.json())
             .then(res => setFruitsCreatedByUser(res))
+
+        const requestOptions2 = { method: 'POST', headers: { 'Authorization': `Bearer ${localStorage.getItem("access_token")}`, 'Accept': 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(body) };
+        fetch(`http://localhost:8000/api/fruits/account_score_of/`, requestOptions2)
+            .then(res => res.json())
+            .then(res => setProfileScore(res))
+
+    }, [])
+
+    useEffect(() => {
+        let body = { "user_id": id }
+
     }, [])
 
     return (
@@ -76,8 +88,8 @@ export const ProfileDetail = () => {
                             }}
                         />
                         <ProfileResume
-                            numberOfCreatedFruits={5}
-                            numberOfLikes={5}
+                            numberOfCreatedFruits={fruitsCreatedByUser.length}
+                            numberOfLikes={profileScore["score"]}
                         />
                         <ProfileInfo user={currentUser} />
                     </Grid>

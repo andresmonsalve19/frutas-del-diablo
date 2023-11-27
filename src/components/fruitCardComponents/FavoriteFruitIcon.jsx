@@ -5,7 +5,7 @@ import { useFavoriteFruitsContext } from "../../hooks";
 import { DataContext } from "../../context/DataContext";
 import { useState } from 'react'
 
-export const FavoriteFruitIcon = ({fruit2}) => {
+export const FavoriteFruitIcon = ({ fruit2 }) => {
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -19,7 +19,7 @@ export const FavoriteFruitIcon = ({fruit2}) => {
     let image = urlParams.get('image')
     let description_short = urlParams.get('description_short')
 
-    if (id === null){
+    if (id === null) {
         id = fruit2["id"]
         name = fruit2["name"]
         description = fruit2["description"]
@@ -33,12 +33,15 @@ export const FavoriteFruitIcon = ({fruit2}) => {
 
     let fruit = { "id": id, "name": name, "description": description, "type_l": type_l, "color": color, "power": power, "consumer": consumer, "url": image, "description_short": description_short }
     let { myFruitsFavorite, addToFavoriteFruits, deleteFavoriteFruit } = useFavoriteFruitsContext()
-    
-    if (myFruitsFavorite["detail"] === 'Authorization header must contain two space-delimited values'){
+
+    if (myFruitsFavorite["detail"] === 'Authorization header must contain two space-delimited values') {
         myFruitsFavorite = []
     }
-    
+
     let [isFruitInFavoriteFruits, setIsFruitInFavoriteFruits] = useState(myFruitsFavorite.some(item => Number(item.id) === Number(id)))
+    console.log(isFruitInFavoriteFruits)
+    console.log(myFruitsFavorite)
+    console.log(id)
 
     function addFavorite(id) {
         const requestOptions = { method: 'GET', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', 'Authorization': `Bearer ${localStorage.getItem("access_token")}` } }

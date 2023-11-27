@@ -61,7 +61,7 @@ export const ProfileCard = ({ user }) => {
                         <motion.h1 whileHover={{ scale: 0.9 }}>
                             <Link
                                 key={user.id}
-                                to={`/profile?username=${user.username}&email=${user.email}&first_name=${user.first_name}&last_name=${user.last_name}&description=${user.userinstance.description}&photo_url=${user.userinstance.photo_url}&id=${user.pk}`}
+                                to={`/profile?username=${user.username}&email=${user.email}&first_name=${user.first_name}&last_name=${user.last_name}&description=${user.userinstance.description}&photo_url=${user.userinstance.photo_url}&user_id=${user.pk}`}
                                 title="Ver más información"
                             >
 
