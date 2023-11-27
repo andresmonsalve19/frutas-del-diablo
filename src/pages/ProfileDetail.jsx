@@ -7,14 +7,32 @@ import { createdFruits } from "../Data";
 import { Box, Typography } from "@mui/material";
 import { FruitCardCreator, SearchBar } from "../components";
 import { useArrayFilter } from "../hooks";
+import { DataContext } from "../context/DataContext";
+import { useEffect, useState } from 'react'
 
 export const ProfileDetail = () => {
-    const {arrayFiltered, setTextFilter} = useArrayFilter(createdFruits, "name")
-    const { profileId } = useParams();
 
-    const currentUser = profiles.find(
-        (profile) => profile.id.toString() === profileId
-    );
+    let [fruitsCreatedByUser, setFruitsCreatedByUser] = useState([])
+    const { arrayFiltered, setTextFilter } = useArrayFilter(fruitsCreatedByUser, "name")
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    let username = urlParams.get('username')
+    let email = urlParams.get('email')
+    let first_name = urlParams.get('first_name')
+    let last_name = urlParams.get('last_name')
+    let photo_url = urlParams.get('photo_url')
+    let description = urlParams.get('description')
+    let id = urlParams.get('id')
+
+    let currentUser = { "username": username, "email": email, "first_name": first_name, "last_name": last_name, "photo_url": photo_url, "description": description, "id": id }
+
+    useEffect(() => {
+        let body = { "user_id": id }
+        const requestOptions = { method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(body) };
+        fetch(`http://localhost:8000/api/fruits/created_by/`, requestOptions)
+            .then(res => res.json())
+            .then(res => setFruitsCreatedByUser(res))
+    }, [])
 
     return (
         <>
@@ -48,7 +66,7 @@ export const ProfileDetail = () => {
                         justifyContent="center"
                     >
                         <img
-                            src={currentUser.image}
+                            src={photo_url}
                             style={{
                                 width: "200px",
                                 height: "200px",
@@ -64,7 +82,7 @@ export const ProfileDetail = () => {
                         <ProfileInfo user={currentUser} />
                     </Grid>
                 </Box>
-                <Box sx={{ width: "100%"}}>
+                <Box sx={{ width: "100%" }}>
                     <Typography
                         textAlign="center"
                         sx={{
@@ -74,7 +92,7 @@ export const ProfileDetail = () => {
                             fontSize: { xs: "1em", sm: "1.5em", md: "2em" },
                         }}
                     >
-                        Frutas creadas por: {currentUser.name}
+                        Frutas creadas por: {first_name}
                     </Typography>
                     <SearchBar filtering={setTextFilter} />
                     <FruitCardCreator data={arrayFiltered} />

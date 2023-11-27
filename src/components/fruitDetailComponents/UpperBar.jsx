@@ -12,7 +12,7 @@ import { FavoriteFruitIcon } from "../fruitCardComponents";
 
 export const UpperBar = ({ id }) => {
     const { isAuth } = useContext(DataContext);
-    let { myFruitsFavorite } = useFavoriteFruits();
+    let { myFruitsFavorite } = useFavoriteFruitsContext();
     if (myFruitsFavorite["detail"] === 'Authorization header must contain two space-delimited values') {
         myFruitsFavorite = []
     }

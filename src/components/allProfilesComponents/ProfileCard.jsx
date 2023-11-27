@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { ProfileResume } from "../profileDetailComponents/ProfileResume";
 
 export const ProfileCard = ({ user }) => {
+
     return (
         <Card
             className="fruit_card"
@@ -29,12 +30,12 @@ export const ProfileCard = ({ user }) => {
                         xs: 200,
                     },
                 }}
-                image={user.image}
+                image={user.userinstance.photo_url}
                 title="Fruit"
             />
             <CardContent>
-                <Typography variant="h6" sx={{mb:1}}>
-                    {user.names + " " + user.lastNames}
+                <Typography variant="h6" sx={{ mb: 1 }}>
+                    {user.first_name + " " + user.last_name}
                 </Typography>
                 <Typography
                     variant="body2"
@@ -43,9 +44,9 @@ export const ProfileCard = ({ user }) => {
                 </Typography>
                 <Typography
                     variant="body1"
-                    sx={{mt:3}}
+                    sx={{ mt: 3 }}
                 >
-                    {user.description}
+                    {user.userinstance.description}
                 </Typography>
                 <Grid
                     container
@@ -60,10 +61,10 @@ export const ProfileCard = ({ user }) => {
                         <motion.h1 whileHover={{ scale: 0.9 }}>
                             <Link
                                 key={user.id}
-                                to={`/profile/${user.id}`}
+                                to={`/profile?username=${user.username}&email=${user.email}&first_name=${user.first_name}&last_name=${user.last_name}&description=${user.userinstance.description}&photo_url=${user.userinstance.photo_url}&id=${user.pk}`}
                                 title="Ver más información"
                             >
-                                
+
                                 <BsChevronCompactDown
                                     style={{
                                         fontSize: 22,

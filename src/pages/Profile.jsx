@@ -3,9 +3,12 @@ import { ProfileResume } from "../components/profileDetailComponents/ProfileResu
 import { ProfileInfo } from "../components/profileDetailComponents/ProfileInfo";
 import { profiles } from "../Data/profiles";
 import { Link } from "react-router-dom";
+import { DataContext } from "../context/DataContext";
+import { useContext } from 'react'
 
 export const Profile = () => {
-    const currentUser = profiles[1];
+
+    const { myProfile } = useContext(DataContext)
 
     return (
         <Container>
@@ -40,7 +43,7 @@ export const Profile = () => {
                         justifyContent="center"
                     >
                         <img
-                            src={currentUser.image}
+                            src={myProfile.userinstance.photo_url}
                             style={{
                                 width: "200px",
                                 height: "200px",
@@ -53,13 +56,13 @@ export const Profile = () => {
                             numberOfCreatedFruits={5}
                             numberOfLikes={5}
                         />
-                        <ProfileInfo user={currentUser} />
+                        <ProfileInfo user={myProfile} />
                         <Button
                             variant="contained"
                             sx={{ mt: 8, width: "60%", height: 50 }}
                         >
                             <Link to="/mis-frutas">
-                                <Typography sx={{color: "white"}} variant="subtitle1">Ver mis frutas creadas</Typography>
+                                <Typography sx={{ color: "white" }} variant="subtitle1">Ver mis frutas creadas</Typography>
                             </Link>
                         </Button>
                     </Grid>

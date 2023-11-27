@@ -17,6 +17,9 @@ export const useArrayFilter = (array, property) => {
         arrayFiltered = newData;
     }
 
+    if (arrayFiltered === undefined){
+        arrayFiltered = []
+    }
     return {
         arrayFiltered,
         setTextFilter,

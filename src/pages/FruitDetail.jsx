@@ -12,7 +12,9 @@ export const FruitDetail = () => {
     let color = urlParams.get('color')
     let power = urlParams.get('power')
     let consumer = urlParams.get('consumer')
-    let image = urlParams.get('image')
+    let image = urlParams.get('image').replace('¡','&')
+
+    console.log(image)
 
     return (
         <>

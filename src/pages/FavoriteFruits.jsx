@@ -1,18 +1,16 @@
 import { Container } from "@mui/material";
 import { SearchBar, FruitCardCreator, PageTitle } from "../components";
-import { useFavoriteFruits, useFruitFilter } from "../hooks";
-import { DataContext } from "../context/DataContext";
-import { useContext } from 'react'
+import { useFavoriteFruitsContext, useArrayFilter } from "../hooks";
 
 export const FavoriteFruits = () => {
-    const { myFruitsFavorite } = useFavoriteFruits()
-    const { fruitsFiltered, setTextFilter } = useFruitFilter(myFruitsFavorite);
+    const { myFruitsFavorite } = useFavoriteFruitsContext()
+    const { arrayFiltered, setTextFilter } = useArrayFilter(myFruitsFavorite, "name");
 
     return (
         <Container maxWidth="xl">
             <PageTitle title="Mis frutas favoritas" variant="h2" />
             <SearchBar filtering={setTextFilter} />
-            <FruitCardCreator data={fruitsFiltered} />
+            <FruitCardCreator data={arrayFiltered} />
         </Container>
     );
 }; 

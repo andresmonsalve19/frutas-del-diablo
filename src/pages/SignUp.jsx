@@ -26,6 +26,8 @@ export const SignUp = () => {
         email: "",
         username: "",
         password1: "",
+        description: "",
+        photo_url: ""
     });
 
     const setData = (e) => {
@@ -34,26 +36,32 @@ export const SignUp = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log(userData);
         setIsAuth(true)
         userData["password2"] = userData["password1"]
+        const userinstance = { "photo_url": userData["photo_url"], "description": userData["description"] }
+        userData["userinstance"] = userinstance
 
-        const requestOptions = { method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(userData)};
+        delete userData["photo_url"]
+        delete userData["description"]
+
+        const requestOptions = { method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(userData) };
         fetch(`http://127.0.0.1:8000/api/accounts/signup/`, requestOptions)
             .then(res => res.json())
             .then(res => setResponse(res))
             .then(setDoneRequest(true))
-            
     };
 
     useEffect(() => {
-        if (response["access_token"] !== undefined){
-            window.alert("El usuario fue creado")
-            navigate("/")
-        }else{
-            window.alert("El usuario no fue creado")
+        if (doneRequest) {
+            console.log(response)
+            if (response["access_token"] !== undefined) {
+                window.alert("El usuario fue creado")
+                navigate("/iniciar-sesion")
+            } else {
+                window.alert("El usuario no fue creado")
+            }
         }
-    }, [doneRequest])
+    }, [response])
 
     return (
         <Container maxWidth="md">
@@ -151,7 +159,7 @@ export const SignUp = () => {
                                 required
                             />
                             <TextField
-                                name="image"
+                                name="photo_url"
                                 margin="normal"
                                 type="text"
                                 fullWidth
@@ -166,14 +174,14 @@ export const SignUp = () => {
                                 label="Acepto términos y condiciones"
                                 required
                             />
-                                <Button
-                                    fullWidth
-                                    type="submit"
-                                    variant="contained"
-                                    sx={{ mt: 1.5, mb: 3, height: "4em" }}
-                                >
-                                    <Typography>Ingresar</Typography>
-                                </Button>
+                            <Button
+                                fullWidth
+                                type="submit"
+                                variant="contained"
+                                sx={{ mt: 1.5, mb: 3, height: "4em" }}
+                            >
+                                <Typography>Ingresar</Typography>
+                            </Button>
                         </Box>
                     </Paper>
                 </Grid>

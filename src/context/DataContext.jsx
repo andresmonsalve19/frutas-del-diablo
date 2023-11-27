@@ -10,6 +10,8 @@ const DataProvider = ({ children }) => {
     const [allFruits, setAllFruits] = useState([])
     const [myFruitsCreated, setMyFruitsCreated] = useState([])
     const [myFruitsFavorite, setMyFruitsFavorite] = useState([])
+    const [allProfiles, setAllProfiles] = useState([])
+    const [myProfile, setMyProfile] = useState([])
     const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAxMzA3NDMyLCJpYXQiOjE3MDA3MDI2MzIsImp0aSI6ImNjNDk2MWY4YTBmZTRhOWU4ZjdmOGIxMzcxNzBiOTI1IiwidXNlcl9pZCI6Mn0.w7qlv1prpf2hbhgvyOMoYPmfQYmcW-tLxDMkAPFwbKA"
 
     useEffect(() => {
@@ -43,15 +45,39 @@ const DataProvider = ({ children }) => {
         }
     }, [isAuth])
 
+    useEffect(() => {
+        try {
+            const requestOptions = { method: 'GET', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' } };
+            fetch(`http://localhost:8000/api/users/`, requestOptions)
+                .then(res => res.json())
+                .then(res => setAllProfiles(res))
+        } catch (error) {
+            setAllProfiles([])
+        }
+    }, [])
+
+    useEffect(() => {
+        try {
+            const requestOptions = { method: 'GET', headers: { 'Authorization': `Bearer ${localStorage.getItem("access_token")}`, 'Accept': 'application/json', 'Content-Type': 'application/json' } };
+            fetch(`http://localhost:8000/api/accounts/user/`, requestOptions)
+                .then(res => res.json())
+                .then(res => setMyProfile(res))
+        } catch (error) {
+            setMyProfile([])
+        }
+    }, [])
+
     return (
         <DataContext.Provider value={{
             isAuth,
             setIsAuth,
             cacheFinish1,
             allFruits,
+            allProfiles,
             myFruitsCreated,
             myFruitsFavorite,
-            setMyFruitsFavorite
+            setMyFruitsFavorite,
+            myProfile
         }}>
             {children}
         </DataContext.Provider>

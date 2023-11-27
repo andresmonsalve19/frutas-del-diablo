@@ -13,7 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import HomeIcon from "@mui/icons-material/Home";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { DataContext } from "../../context/DataContext";
 
 const pages = ["Mis Frutas", "Favoritas", "Registrar Fruta", "Perfiles"];
@@ -23,7 +23,14 @@ export const NavBar = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     const navigate = useNavigate();
-    const { setIsAuth } = useContext(DataContext);
+    const { setIsAuth, myProfile } = useContext(DataContext);
+    const [myPhoto, setMyPhoto] = useState("");
+
+    useEffect(() => {
+        if (myProfile.length !== 0) {
+            setMyPhoto(myProfile.userinstance.photo_url)
+        }
+    }, [myProfile])
 
     function HandleCloseSession() {
         localStorage.setItem("session", false)
@@ -210,7 +217,7 @@ export const NavBar = () => {
                                 onClick={handleOpenUserMenu}
                                 sx={{ p: 0 }}
                             >
-                                <Avatar alt="Remy Sharp" src="https://i.pinimg.com/originals/37/8a/27/378a270e775265622393da8c0527417e.jpg" />
+                                <Avatar alt="Remy Sharp" src={myPhoto} />
                             </IconButton>
                         </Tooltip>
                         <Menu

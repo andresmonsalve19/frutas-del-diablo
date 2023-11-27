@@ -1,5 +1,4 @@
 import { createContext } from "react";
-import { useFavoriteFruitsReducer } from "../hooks/useFavoriteFruitsReducer";
 import { DataContext } from "../context/DataContext";
 import { useContext } from 'react'
 
@@ -14,7 +13,6 @@ export const FavoriteFruitsProvider = ({ children }) => {
             (item) => item.id === fruit.id
         );
         if (fruitInFavoritesIndex >= 0) {
-            console.log("Esta fruta ya fue agregada a favorita");
             return;
         }
         setMyFruitsFavorite([...myFruitsFavorite, fruit])

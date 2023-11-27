@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Grid, IconButton } from "@mui/material";
 import { BsHeart, BsFillHeartFill } from "react-icons/bs";
-import { useFavoriteFruits } from "../../hooks";
+import { useFavoriteFruitsContext } from "../../hooks";
 import { DataContext } from "../../context/DataContext";
 import { useState } from 'react'
 
@@ -28,11 +28,11 @@ export const FavoriteFruitIcon = ({fruit2}) => {
         color = fruit2["color"]
         power = fruit2["power"]
         consumer = fruit2["consumer"]
-        image = fruit2["fruitimage_set"][0]["image"]
+        image = fruit2["url"]
     }
 
-    let fruit = { "id": id, "name": name, "description": description, "type_l": type_l, "color": color, "power": power, "consumer": consumer, "fruitimage_set": [{ image }], "description_short": description_short }
-    let { myFruitsFavorite, addToFavoriteFruits, deleteFavoriteFruit } = useFavoriteFruits()
+    let fruit = { "id": id, "name": name, "description": description, "type_l": type_l, "color": color, "power": power, "consumer": consumer, "url": image, "description_short": description_short }
+    let { myFruitsFavorite, addToFavoriteFruits, deleteFavoriteFruit } = useFavoriteFruitsContext()
     
     if (myFruitsFavorite["detail"] === 'Authorization header must contain two space-delimited values'){
         myFruitsFavorite = []
@@ -46,7 +46,6 @@ export const FavoriteFruitIcon = ({fruit2}) => {
 
         addToFavoriteFruits(fruit)
         setIsFruitInFavoriteFruits(true)
-        console.log("agg a favoritas")
     }
 
     function deleteFavorite(id) {
@@ -55,7 +54,6 @@ export const FavoriteFruitIcon = ({fruit2}) => {
 
         deleteFavoriteFruit(fruit)
         setIsFruitInFavoriteFruits(false)
-        console.log("eliminada de favoritas")
     }
 
     return (

@@ -8,7 +8,7 @@ import { FavoriteFruitIcon } from "./FavoriteFruitIcon";
 
 export const FruitCard = ({ json }) => {
     const { id, name, description_short, description, type_l, color, power, consumer } = json;
-    const fruitimage_set = json["fruitimage_set"][0]["image"]
+    const fruitimage_set = json["url"]
     const { isAuth } = useContext(DataContext)
 
     return (
@@ -54,7 +54,7 @@ export const FruitCard = ({ json }) => {
                         }
                         <Grid item>
                             <motion.h1 whileHover={{ scale: 0.9 }}>
-                                <Link key={id} to={`/fruta?id=${json.id}&name=${name}&description=${description}&type_l=${type_l}&color=${color}&power=${power}&consumer=${consumer}&image=${fruitimage_set}&description_short=${description_short}`}>
+                                <Link key={id} to={`/fruta?id=${json.id}&name=${name}&description=${description}&type_l=${type_l}&color=${color}&power=${power}&consumer=${consumer}&image=${fruitimage_set.replace("&","¡")}&description_short=${description_short}`}>
                                     <BsPlusCircle
                                         style={{
                                             fontSize: 22,

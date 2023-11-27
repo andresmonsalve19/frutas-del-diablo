@@ -28,7 +28,7 @@ export const Router = () => {
                 <Route path="registrar-fruta" element={<RegisterFruit />} />
                 <Route path="editar-fruta/:fruitId" element={<EditFruit />} />
                 <Route path="perfiles" element={<AllProfiles />} />
-                <Route path="profile/:profileId" element={<ProfileDetail />} />
+                <Route path="profile" element={<ProfileDetail />} />
             </Route>
             <Route path="iniciar-sesion" element={<SignIn />} />
             <Route path="registro" element={<SignUp />} />

@@ -8,7 +8,6 @@ import { useContext } from "react";
 export const Home = () => {
 
     const { allFruits } = useContext(DataContext)
-    //const { fruitsFiltered, setTextFilter } = useFruitFilter(allFruits)
     const { arrayFiltered, setTextFilter } = useArrayFilter(allFruits, "name")
 
     return (
